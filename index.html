@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linhas de Ônibus - Campina Grande/PB</title>
-    <style>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
         
         body {
             background: linear-gradient(135deg, #8b0000 0%, #cc0000 100%);
@@ -303,6 +306,10 @@
         .linha-descricao {
             font-weight: 600;
             margin-bottom: 5px;
+            margin-left: 300px;
+            font-size: 25px;
+            font-family: "Rubik", sans-serif;
+            color: #cc0000;
         }
         
         .bairros-list {
@@ -320,24 +327,6 @@
             font-size: 14px;
         }
         
-        
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .header-image-main {
-                width: 180px;
-                height: 100px;
-            }
-            
-            .header-image {
-                width: 140px;
-                height: 100px;
-            }
-        }
-
         .button1 {
             margin-top: 3px;
             padding: 10px;
@@ -354,6 +343,23 @@
             color: #333;
             margin-left: 230px;
         }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-image-main {
+                width: 180px;
+                height: 100px;
+            }
+            
+            .header-image {
+                width: 140px;
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -369,13 +375,6 @@
             </div>
         </div>
      
-<!--div>
-<select name="frutas" id="frutas">
-  <option value="">--Selecione--</option>
-  <option ></option>
-</select>
-</!--div-->
-
         <!--Botão1-->        
         <div class="button1">
             <button type="button" id="voltar" onclick="voltarpagina()">CARUARU</button>
@@ -417,9 +416,72 @@
 
     <script>
         const dados = [
-            {bairro: "Santo Antônio", empenas: ["100", "044"]},
-            {bairro: "Rua Santa Cecília", empenas: ["100", "044"]},
+            {bairro: "Alto Branco", empenas: ["Empena Alto Branco"]},
+            {bairro: "Rua Ordenez Trovão de Melo", empenas: ["Empena Alto Branco"]},
+
+            {bairro: "Santo Antônio", empenas: ["Empena Santo Antônio"]},
+            {bairro: "Av. Mal. Floriano Peixoto", empenas: ["Empena Santo Antônio"]},
+            {bairro: "Avenida Marechal Floriano Peixoto", empenas: ["Empena Santo Antônio"]},
+                  
+            {bairro: "Centro", empenas: ["Empena Centro 1", "Empena Centro 2"]},
+            {bairro: "Rua Sebastião Donato", empenas: ["Empena Centro 1", "Empena Centro 2"]},
+
+            {bairro: "Catolé 1", empenas: ["Empena Catolé(Av. Canal)"]},
+            {bairro: "Catolé 2", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
+            {bairro: "Av. Canal", empenas: ["Empena Catolé"]},
+            {bairro: "Avenida Canal", empenas: ["Empena Catolé"]},
+
+            {bairro: "São José", empenas: ["Empena São José"]},
+            {bairro: "Av. Dr. Elpídio de Almeida", empenas: ["Empena São José"]},
+            {bairro: "Avenida Doutor Elpídio de Almeida", empenas: ["Empena São José"]},
+
+            {bairro: "Santa Teresinha", empenas: ["Empena Santa Teresinha"]},
+            {bairro: "Br 230", empenas: ["Empena Santa Teresinha"]},
+
+            {bairro: "Rua Vig. Calixto", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
+            {bairro: "Rua Vigário Calixto", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
         ];
+
+        // Imagens especiais (mapas das linhas)
+        const imagensEspeciais = {
+            "Empena Alto Branco": "img/1.jpg",
+            "Empena Santo Antônio": "img/2.jpg",
+            "Empena Centro 1": "img/3.jpg",
+            "Empena Centro 2": "img/3.jpg",
+            "Empena Catolé(Av. Canal)": "img/4.jpg",
+            "Empena São José": "img/5.jpg",
+            "Empena Santa Teresinha": "img/6.jpg",
+            "Empena Catolé(R. Vig. Calixto)": "img/7.jpg"
+        };
+
+        // Google Maps para cada bairro
+        const mapasBairros = {
+            "Alto Branco": "https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
+            "Rua Ordenez Trovão de Melo":"https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
+
+            "Santo Antônio": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
+            "Av. Mal. Floriano Peixoto": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
+            "Avenida Marechal Floriano Peixoto" :"https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
+
+            "Centro": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
+            "Rua Sebastião Donato": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
+
+            "Catolé 1": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
+            "Av. Canal": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
+            "Avenida Canal": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
+
+            "São José": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
+            "Av. Dr. Elpídio de Almeida": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
+            "Avenida Doutor Elpídio de Almeida": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
+
+            "Santa Teresinha": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
+            "Br 230": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
+
+            "Rua Vig. Calixto": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
+            "Rua Vigário Calixto": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
+
+            "Catolé 2": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
+        };
 
         // Ignorar Acentos
         function normalizar(str) {
@@ -452,7 +514,7 @@
                                 <div class="bairro-title">${bairroEncontrado.bairro}</div>
                                 <div class="linhas-list">
                                     ${bairroEncontrado.empenas.map(empena => 
-                                        `<button class="linha-btn" onclick="mostrarDetalhesLinha('${empena}')">${empena}</button>`
+                                        `<button class="linha-btn" onclick="mostrarDetalhesLinha('${empena}', '${bairroEncontrado.bairro}')">${empena}</button>`
                                     ).join('')}
                                 </div>
                             </div>
@@ -475,43 +537,55 @@
             }, 800);
         }
 
+        function mostrarDetalhesLinha(numeroLinha, bairro) {
+            const bairrosComEstaRota = dados.filter(item => item.empenas.includes(numeroLinha));
+            
+            // Verifica se tem imagem especial, senão usa a padrão
+            const imagemLinha = imagensEspeciais[numeroLinha] || "https://i.imgur.com/ygxe7QR.png";
+            
+            // Obter o mapa específico para o bairro
+            const mapaBairro = mapasBairros[bairro] || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.258663292987!2d-35.88872292501706!3d-7.215845392848311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac1f4d8b1b3f3b%3A0x5c5e5c5e5c5e5c5e!2sCampina%20Grande%20-%20PB!5e0!3m2!1spt-BR!2sbr!4v1234567890";
+            
+            let modalHTML = "";
+            
+            // Mapa da Linha (imagem especial)
+            modalHTML += `
+                <div class="linha-info">
+                    <div class="linha-descricao">Mapa da ${numeroLinha}:</div>
 
+                    <div style="text-align: center; margin: 15px 0;">
+                        <img src="${imagemLinha}" 
+                             alt="Mapa da Linha ${numeroLinha}" 
+                             style="max-width: 600px; border-radius: 8px; border: 2px solid #cc0000;">
+                    </div>
+                </div>
+            `;
+            
+            // Google Maps do Bairro
+            modalHTML += `
+                <div class="linha-info">
+                    <div class="linha-descricao">Localização - ${bairro}:</div>
+                    <div style="text-align: center; margin: 15px 0;">
+                        <iframe 
+                            src="${mapaBairro}" 
+                            width="100%" 
+                            height="400" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                            
+                        </iframe>
+                        
+                    </div>
+                </div>
+            `;
 
-// linhas com imagens específicas
-const imagensEspeciais = {
-    "044": "img/1.jpg",
-};
+            document.getElementById('modalLinhaNumero').textContent = `Linha ${numeroLinha} - ${bairro}`;
+            document.getElementById('modalConteudo').innerHTML = modalHTML;
+            document.getElementById('linhaModal').style.display = 'flex';
+        }
 
-function mostrarDetalhesLinha(numeroLinha) {
-    const bairrosComEstaRota = dados.filter(item => item.empenas.includes(numeroLinha));
-    
-    // Verifica se tem imagem especial, senão usa a padrão
-    const imagemLinha = imagensEspeciais[numeroLinha] || "https://i.imgur.com/ygxe7QR.png";
-    
-    let modalHTML = "";
-    
-    modalHTML += `
-        <div class="linha-info">
-            <div class="linha-descricao">Mapa da Linha ${numeroLinha}:</div>
-            <div style="text-align: center;">
-                <img src="${imagemLinha}" 
-                     alt="Mapa da Linha ${numeroLinha}" 
-                     style="max-width: 600px; width: 100%; height: auto;">
-            </div>
-        </div>
-    `;
-    
-    modalHTML += `
-        <div class="linha-info">
-            <iframe src="https://www.google.com/maps/embed?pb=!3m2!1spt-BR!2sbr!4v1761162961137!5m2!1spt-BR!2sbr!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f302.57894320110313!4f2.874422526643542!5f0.7820865974627469" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe
-             style = ""max-width: 600px; width: 100%; height: auto;
-        </div>
-    `;
-
-    document.getElementById('modalLinhaNumero').textContent = `Linha ${numeroLinha}`;
-    document.getElementById('modalConteudo').innerHTML = modalHTML;
-    document.getElementById('linhaModal').style.display = 'flex';
-}
         // Função para fechar o modal
         function fecharModal() {
             document.getElementById('linhaModal').style.display = 'none';
