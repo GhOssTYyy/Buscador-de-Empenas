@@ -364,7 +364,7 @@
                 <img src="https://i.imgur.com/ygxe7QR.png" alt="CG - Rainha da borborema" class="header-image">
                 <div class="header-text">
                     <h1>CAMPINA GRANDE - PB</h1>
-                    <p class="subtitle">Sistema de Consulta de Linhas de Ônibus</p>
+                    <p class="subtitle">Sistema de Consulta de Empenas Caju</p>
                 </div>
             </div>
         </div>
@@ -389,17 +389,17 @@
                 <input type="text" id="bairrosInput" placeholder="Ex: Centro, Catolé, Dinamérica">
             </div>
             
-            <button onclick="buscarLinhas()" id="consultarBtn">Consultar Linhas</button>
+            <button onclick="buscarLinhas()" id="consultarBtn">Consultar Empenas</button>
             <button onclick="limparResultados()" class="clear-btn">Limpar Resultados</button>
             
             <div class="result-container">
-                <div class="result-title">Linhas encontradas:</div>
+                <div class="result-title">Empenas encontradas:</div>
                 <div id="resultado">Os resultados aparecerão aqui</div>
             </div>
         </div>
         
         <div class="footer">
-            © 2025 Sistema de Transporte de Campina Grande
+            © 2025 Caju Conecta
         </div>
     </div>
 
@@ -417,7 +417,8 @@
 
     <script>
         const dados = [
-            {bairro: "Alto Branco", empenas: ["100", "044"]},
+            {bairro: "Santo Antônio", empenas: ["100", "044"]},
+            {bairro: "Rua Santa Cecília", empenas: ["100", "044"]},
         ];
 
         // Ignorar Acentos
@@ -430,7 +431,7 @@
             const bairrosProcurados = input.split(',').map(b => normalizar(b.trim()));
 
             // Mostrar loading
-            document.getElementById('resultado').innerHTML = "<span class='loading'></span>Buscando linhas...";
+            document.getElementById('resultado').innerHTML = "<span class='loading'></span>Buscando Empenas...";
             document.getElementById('resultado').className = "info";
             
             // Desabilitar botão durante a busca
@@ -460,7 +461,7 @@
                         resultadosHTML += `
                             <div class="bairro-result">
                                 <div class="bairro-title">${bairroProcurado}</div>
-                                <div class="no-linhas">Nenhuma linha encontrada para este bairro</div>
+                                <div class="no-linhas">Nenhuma Empena encontrada para este bairro</div>
                             </div>
                         `;
                     }
