@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linhas de Ônibus - Campina Grande/PB</title>
-  <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
         * {
             margin: 0;
@@ -14,7 +14,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        
         body {
             background: linear-gradient(135deg, #8b0000 0%, #cc0000 100%);
             min-height: 100vh;
@@ -306,10 +305,10 @@
         .linha-descricao {
             font-weight: 600;
             margin-bottom: 5px;
-            margin-left: 300px;
-            font-size: 25px;
+            font-size: 20px;
             font-family: "Rubik", sans-serif;
             color: #cc0000;
+            text-align: center;
         }
         
         .bairros-list {
@@ -359,6 +358,26 @@
                 width: 140px;
                 height: 100px;
             }
+            
+            .linha-descricao {
+                margin-left: 0;
+                text-align: center;
+            }
+            
+            h2 {
+                margin-left: 0;
+                text-align: center;
+            }
+            
+            .button1 {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .botao2 {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     </style>
 </head>
@@ -406,7 +425,7 @@
     <div class="modal" id="linhaModal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="modalLinhaNumero">Linha 000</div>
+                <div class="modal-title" id="modalLinhaNumero">Empena</div>
                 <button class="close-btn" onclick="fecharModal()">&times;</button>
             </div>
             <div id="modalConteudo">
@@ -415,99 +434,59 @@
     </div>
 
     <script>
+        // Dados organizados e corrigidos
         const dados = [
-            {bairro: "Alto Branco", empenas: ["Empena Alto Branco"]},
-            {bairro: "Rua Ordenez Trovão de Melo", empenas: ["Empena Alto Branco"]},
+    {
+        bairro: "Alto Branco",
+        variacoes: ["Alto Branco", "Rua Ordenez Trovão de Melo"],
+        empenas: ["Empena Alto Branco"]
+    },
+    {
+        bairro: "Santo Antônio", 
+        variacoes: ["Santo Antônio", "Av. Mal. Floriano Peixoto 2"],
+        empenas: ["Empena Santo Antônio"]
+    },
+    {
+        bairro: "Centro",
+        variacoes: ["Centro 1", "Centro 2", "Centro 3", "Centro 4", "Centro 5", "Centro 6", "Centro 7", "Centro 8", "Centro 9", "Centro 10", "Centro 11", "Rua Sebastião Donato 1", "Rua Sebastião Donato 2", "Rua João Suassuana", "Rua Vidal Negreiros", "Rua Siqueira Campos", "Rua Maciel Pinheiro 1", "Rua Maciel Pinheiro 2", "Rua Venâncio Neiva", "Rua Semeão Leal", "Rua Treze de Maio"],
+        empenas: ["Empena Centro 1", "Empena Centro 2", "Empena Centro 3", "Empena Centro 4", "Empena Centro 5", "Empena Centro 6", "Empena Centro 7", "Empena Centro 8", "Empena Centro 9", "Empena Centro 10", "Empena Centro 11"]
+    },
+    {
+        bairro: "Catolé",
+        variacoes: ["Catolé 1", "Catolé 2", "Av. Canal", "Rua Vig. Calixto"],
+        empenas: ["Empena Catolé(Av. Canal)", "Empena Catolé(R. Vig. Calixto)"]
+    },
+    {
+        bairro: "São José",
+        variacoes: ["São José 1", "São José 2", "São José 3", "São José 4", "São José 5", "Av. Dr. Elpídio de Almeida", "Rua Dr. João Moura", "Praça do Trabalho", "Rua Lino Gomes da Silva", "Av. Dom Pedro I"],
+        empenas: ["Empena São José 1", "Empena São José 2", "Empena São José 3", "Empena São José 4", "Empena São José 5"]
+    },
+    {
+        bairro: "Santa Teresinha",
+        variacoes: ["Santa Teresinha", "Br 230"],
+        empenas: ["Empena Santa Teresinha"]
+    },
+    {
+        bairro: "Centenário",
+        variacoes: ["Centenário 1", "Av. Marechal Floriano Peixoto 2"],
+        empenas: ["Empena Centenário"]
+    },
+    {
+        bairro: "Prata",
+        variacoes: ["Prata 1", "Rua Nilo Peçanha"],
+        empenas: ["Empena Prata"]
+    },
+    {
+        bairro: "José Pinheiro",
+        variacoes: ["José Pinheiro 1", "José Pinheiro 2", "José Pinheiro 3", "Av. Prefeito Severino Bezerra", "Rua Campos Sales 1", "Rua Campos Sales 2"],
+        empenas: ["Empena José Pinheiro 1", "Empena José Pinheiro 2", "Empena José Pinheiro 3"]
+    },
+    {
+        bairro: "Castelo Branco",
+        variacoes: ["Castelo Branco", "Av. Marechal Floriano Peixoto 4"],
+        empenas: ["Empena Castelo Branco"]
+    }
 
-            {bairro: "Santo Antônio", empenas: ["Empena Santo Antônio"]},
-            {bairro: "Av. Mal. Floriano Peixoto 2", empenas: ["Empena Santo Antônio"]},
-            //igual
-            {bairro: "Avenida Marechal Floriano Peixoto 2", empenas: ["Empena Santo Antônio"]},
-                  
-            {bairro: "Centro 1", empenas: ["Empena Centro 1", "Empena Centro 2"]},
-            {bairro: "Rua Sebastião Donato 1", empenas: ["Empena Centro 1", "Empena Centro 2"]},
-            //igual
-            {bairro: "Catolé 1", empenas: ["Empena Catolé(Av. Canal)"]},
-            //igual
-            {bairro: "Catolé 2", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
-            {bairro: "Av. Canal", empenas: ["Empena Catolé"]},
-            {bairro: "Avenida Canal", empenas: ["Empena Catolé"]},
-
-            {bairro: "São José 1", empenas: ["Empena São José 1"]},
-            {bairro: "Av. Dr. Elpídio de Almeida", empenas: ["Empena São José 1"]},
-            {bairro: "Avenida Doutor Elpídio de Almeida", empenas: ["Empena São José 1"]},
-
-            {bairro: "Santa Teresinha", empenas: ["Empena Santa Teresinha"]},
-            {bairro: "Br 230", empenas: ["Empena Santa Teresinha"]},
-
-            {bairro: "Rua Vig. Calixto", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
-            {bairro: "Rua Vigário Calixto", empenas: ["Empena Catolé(R. Vig. Calixto)"]},
-
-            {bairro: "Centenário 1", empenas: ["Empena Centro 3"]},
-            {bairro: "Av. Marechal Floriano Peixoto 2", empenas: ["Empena Centenário"]},  
-            //igual
-            {bairro: "Avenida Marechal Floriano Peixoto 2", empenas: ["Empena Centenário"]},
-
-
-            {bairro: "Rua João Suassuana", empenas: ["Empena Centro"]},
-            {bairro: "Avenida Marechal Floriano Peixoto 3", empenas: ["Empena Centro"]},
-            {bairro: "Av. Marechal Floriano Peixoto 3", empenas: ["Empena Centro 3"]},
-            {bairro: "Centro 3", empenas: ["Empena Centro 3"]},
-
-            {bairro: "Centro 4", empenas: ["Empena Centro 4"]},
-            {bairro: "Rua Vidal Negreiros", empenas: ["Empena Centro 4"]},
-
-            {bairro: "São José 2", empenas: ["Empena São José 2"]},
-            {bairro: "Rua Dr. João Moura", empenas: ["Empena São José 2"]},
-            {bairro: "Rua Doutor João Moura", empenas: ["Empena São José 2"]},
-
-            {bairro: "Rua Nilo Peçanha", empenas: ["Empena Prata"]},
-            {bairro: "Prata 1", empenas: ["Empena Prata"]},
-
-            {bairro: "Rua Siqueira Campos", empenas: ["Empena Centro 5"]},
-            {bairro: "Centro 5", empenas: ["Empena Centro 5"]},
-
-            {bairro: "José Pinheiro 1", empenas: ["Empena José Pinheiro 1"]},
-            {bairro: "Av. Prefeito Severino Bezerra", empenas: ["Empena José Pinheiro 1"]},
-            {bairro: "Avenida Prefeito Severino Bezerra", empenas: ["Empena José Pinheiro 1"]},
-
-            {bairro: "Rua Campos Sales 1", empenas: ["Empena José Pinheiro 2"]},
-            {bairro: "José Pinheiro 2", empenas: ["Empena José Pinheiro 2"]}, 
-            
-            {bairro: "José Pinheiro 3", empenas: ["Empena José Pinheiro 3"]},
-            {bairro: "Rua Campos Sales 2", empenas: ["Empena José Pinheiro 3"]},
-
-            {bairro: "Rua Maciel Pinheiro 1", empenas: ["Empena Centro 6"]},
-            {bairro: "Centro 6", empenas: ["Empena Centro 6"]},
-
-            {bairro: "Centro 7", empenas: ["Empena Centro 7"]},
-            {bairro: "Rua Maciel Pinheiro 2", empenas: ["Empena Centro 6"]},
-
-            {bairro: "Castelo Branco", empenas: ["Empena Castelo Branco"]},
-            {bairro: "Av. Marechal Floriano Peixoto 4", empenas: ["Empena Castelo Branco"]},
-            {bairro: "Avenida Marechal Floriano Peixoto 4", empenas: ["Empena Castelo Branco"]},
-
-            {bairro: "Rua Venâncio Neiva", empenas: ["Empena Centro 8"]},
-            {bairro: "Centro 8", empenas: ["Empena Centro 8"]},
-
-            {bairro: "Centro 9", empenas: ["Empena Centro 9"]},
-            {bairro: "Rua Semeão Leal", empenas: ["Empena Centro 9"]},
-
-            {bairro: "São José 3", empenas: ["Empena São José 3"]},
-            {bairro: "Praça do Trabalho", empenas: ["Empena São José 3"]},
-
-            {bairro: "São José 4", empenas: ["Empena São José 4"]},
-            {bairro: "Rua Lino Gomes da Silva", empenas: ["Empena São José 4"]},
-
-            {bairro: "Centro 10", empenas: ["Empena Centro 10"]},
-            {bairro: "Rua Treze de Maio", empenas: ["Empena Centro 10"]},
-
-            {bairro: "Centro 11", empenas: ["Empena Centro 11"]},
-            {bairro: "Rua Sebastião Donato 2", empenas: ["Empena Centro 11"]},
-
-            {bairro: "São José 5", empenas: ["Empena São José 5"]},
-            {bairro: "Av. Dom Pedro I", empenas: ["Empena São José 5"]}, 
-            {bairro: "Avenida Dom Pedro I", empenas: ["Empena São José 5"]},
         ];
 
         // Imagens especiais (mapas das linhas)
@@ -539,100 +518,37 @@
             "Empena Centro 10": "img/24.jpg",
             "Empena Centro 11": "img/25.jpg",
             "Empena São José 5": "img/26.jpg"
-
         };
 
-        // Google Maps para cada bairro
-        const mapasBairros = {
-            "Alto Branco": "https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
-            "Rua Ordenez Trovão de Melo":"https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
-
-            "Santo Antônio": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
-            "Av. Mal. Floriano Peixoto 1": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
-            "Avenida Marechal Floriano Peixoto 1" :"https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
-
-            "Centro": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
-            "Rua Sebastião Donato 1": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
-
-            "Catolé 1": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
-            "Av. Canal": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
-            "Avenida Canal": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
-
-            "São José 1": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
-            "Av. Dr. Elpídio de Almeida": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
-            "Avenida Doutor Elpídio de Almeida": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
-
-            "Santa Teresinha": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
-            "Br 230": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
-
-            "Rua Vig. Calixto": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
-            "Rua Vigário Calixto": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
-
-            "Catolé 2": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
-            
-            "Av. Marechal Floriano Peixoto 2": "https://www.google.com/maps/embed?pb=!4v1761671758078!6m8!1m7!1sUiENPNe4L6qTsCMeQyNuyg!2m2!1d-7.227425420748289!2d-35.90126367712924!3f279.616573297451!4f29.702127353515678!5f0.7820865974627469",
-            "Avenida Marechal Floriano Peixoto 2": "https://www.google.com/maps/embed?pb=!4v1761671758078!6m8!1m7!1sUiENPNe4L6qTsCMeQyNuyg!2m2!1d-7.227425420748289!2d-35.90126367712924!3f279.616573297451!4f29.702127353515678!5f0.7820865974627469", 
-
-            "Av. Marechal Floriano Peixoto 3": "https://www.google.com/maps/embed?pb=!4v1761672265301!6m8!1m7!1sEjRkrB_h9qOjFPYFMVSYCw!2m2!1d-7.217113821390524!2d-35.88598169399577!3f320.9939722057087!4f37.582719366257365!5f0.7820865974627469",
-            "Avenida Marechal Floriano Peixoto 3": "https://www.google.com/maps/embed?pb=!4v1761672265301!6m8!1m7!1sEjRkrB_h9qOjFPYFMVSYCw!2m2!1d-7.217113821390524!2d-35.88598169399577!3f320.9939722057087!4f37.582719366257365!5f0.7820865974627469",
-            "Centro 3": "https://www.google.com/maps/embed?pb=!4v1761672265301!6m8!1m7!1sEjRkrB_h9qOjFPYFMVSYCw!2m2!1d-7.217113821390524!2d-35.88598169399577!3f320.9939722057087!4f37.582719366257365!5f0.7820865974627469",
-
-            "Rua Vidal Negreiros": "https://www.google.com/maps/embed?pb=!4v1761673069101!6m8!1m7!1stLk2Sgi1tSz3mZKGWJslyw!2m2!1d-7.220813353790592!2d-35.88302335292972!3f350.7382719765872!4f22.269199263968602!5f1.5365362823413857",
-            "Centro 4": "https://www.google.com/maps/embed?pb=!4v1761673069101!6m8!1m7!1stLk2Sgi1tSz3mZKGWJslyw!2m2!1d-7.220813353790592!2d-35.88302335292972!3f350.7382719765872!4f22.269199263968602!5f1.5365362823413857",
-
-            "São José 2": "https://www.google.com/maps/embed?pb=!4v1761673824595!6m8!1m7!1si1wuEBJjo9szwxtPrZKtSw!2m2!1d-7.22598356954409!2d-35.88575983265802!3f65.93794627129968!4f25.313284656880512!5f0.7820865974627469",
-            "Rua Doutor João Moura": "https://www.google.com/maps/embed?pb=!4v1761673824595!6m8!1m7!1si1wuEBJjo9szwxtPrZKtSw!2m2!1d-7.22598356954409!2d-35.88575983265802!3f65.93794627129968!4f25.313284656880512!5f0.7820865974627469",
-            "Rua Dr. João Moura": "https://www.google.com/maps/embed?pb=!4v1761673824595!6m8!1m7!1si1wuEBJjo9szwxtPrZKtSw!2m2!1d-7.22598356954409!2d-35.88575983265802!3f65.93794627129968!4f25.313284656880512!5f0.7820865974627469",
-
-            "Prata 1": "https://www.google.com/maps/embed?pb=!4v1761674165250!6m8!1m7!1soTnDYQ82LbKQfpMiBG5okQ!2m2!1d-7.219293436539906!2d-35.89533838554095!3f255.78391032331726!4f29.946784136086194!5f0.7820865974627469",
-            "Rua Nilo Peçanha": "https://www.google.com/maps/embed?pb=!4v1761674165250!6m8!1m7!1soTnDYQ82LbKQfpMiBG5okQ!2m2!1d-7.219293436539906!2d-35.89533838554095!3f255.78391032331726!4f29.946784136086194!5f0.7820865974627469",
-
-            "Rua Siqueira Campos": "https://www.google.com/maps/embed?pb=!4v1761674647843!6m8!1m7!1sfdLvReWBwB9Wxifi-39g4A!2m2!1d-7.213459466481239!2d-35.88932392462118!3f203.95121773890318!4f33.97297297562574!5f0.747649591134284",
-            "Centro 5": "https://www.google.com/maps/embed?pb=!4v1761674647843!6m8!1m7!1sfdLvReWBwB9Wxifi-39g4A!2m2!1d-7.213459466481239!2d-35.88932392462118!3f203.95121773890318!4f33.97297297562574!5f0.747649591134284",
-
-            "Av. Prefeito Severino Bezerra": "https://www.google.com/maps/embed?pb=!4v1761675356062!6m8!1m7!1s3SsNdGfHTnNb-yViC5Cvcw!2m2!1d-7.228033168463563!2d-35.87439376034003!3f349.844435111335!4f10.275788419642154!5f1.5366184664772655",
-            "Avenida Prefeito Severino Bezerra": "https://www.google.com/maps/embed?pb=!4v1761675356062!6m8!1m7!1s3SsNdGfHTnNb-yViC5Cvcw!2m2!1d-7.228033168463563!2d-35.87439376034003!3f349.844435111335!4f10.275788419642154!5f1.5366184664772655",
-            "José Pinheiro 1": "https://www.google.com/maps/embed?pb=!4v1761675356062!6m8!1m7!1s3SsNdGfHTnNb-yViC5Cvcw!2m2!1d-7.228033168463563!2d-35.87439376034003!3f349.844435111335!4f10.275788419642154!5f1.5366184664772655",
-
-            "José Pinheiro 2": "https://www.google.com/maps/embed?pb=!4v1761676036740!6m8!1m7!1s0NtX_6KTzkSGs0FJKFf4aw!2m2!1d-7.22716108870017!2d-35.87210376520341!3f216.63880926326647!4f23.461197276374506!5f0.7820865974627469s",
-            "Rua Campos Sales 1": "https://www.google.com/maps/embed?pb=!4v1761676036740!6m8!1m7!1s0NtX_6KTzkSGs0FJKFf4aw!2m2!1d-7.22716108870017!2d-35.87210376520341!3f216.63880926326647!4f23.461197276374506!5f0.7820865974627469",
-
-            "José Pinheiro 3": "https://www.google.com/maps/embed?pb=!4v1761676416851!6m8!1m7!1sd7uPzPJ7Kt5COwslY9rCFg!2m2!1d-7.221496339482704!2d-35.8737640058223!3f189.29001103641554!4f18.645202482380682!5f1.4837964843781664",
-            "Rua Campos Sales 2": "https://www.google.com/maps/embed?pb=!4v1761676416851!6m8!1m7!1sd7uPzPJ7Kt5COwslY9rCFg!2m2!1d-7.221496339482704!2d-35.8737640058223!3f189.29001103641554!4f18.645202482380682!5f1.4837964843781664",
-
-            "Centro 6": "https://www.google.com/maps/embed?pb=!4v1761677530227!6m8!1m7!1smgrzpcWnEd-mL-5WHdADBg!2m2!1d-7.21852666241489!2d-35.88309636687061!3f109.82773392878244!4f41.24072631415214!5f0.7820865974627469",
-            "Rua Maciel Pinheiro 1": "https://www.google.com/maps/embed?pb=!4v1761677530227!6m8!1m7!1smgrzpcWnEd-mL-5WHdADBg!2m2!1d-7.21852666241489!2d-35.88309636687061!3f109.82773392878244!4f41.24072631415214!5f0.7820865974627469",
-
-            "Rua Maciel Pinheiro 2": "https://www.google.com/maps/embed?pb=!4v1761677751350!6m8!1m7!1suZIwfdJggZ_ZtNRghh0iKw!2m2!1d-7.218259508990137!2d-35.88335266356343!3f172.04484776198245!4f19.390455297501205!5f1.5365362823394726",
-            "Centro 7": "https://www.google.com/maps/embed?pb=!4v1761677751350!6m8!1m7!1suZIwfdJggZ_ZtNRghh0iKw!2m2!1d-7.218259508990137!2d-35.88335266356343!3f172.04484776198245!4f19.390455297501205!5f1.5365362823394726",
-
-            "Castelo Branco": "https://www.google.com/maps/embed?pb=!4v1761678237210!6m8!1m7!1spNZF8cXJaD_aLnLVTHoGVQ!2m2!1d-7.217353909934356!2d-35.87859731792896!3f49.369154673341875!4f16.329432790507155!5f1.4655786640268316",
-            "Avenida Marechal Floriano Peixoto 4": "https://www.google.com/maps/embed?pb=!4v1761678237210!6m8!1m7!1spNZF8cXJaD_aLnLVTHoGVQ!2m2!1d-7.217353909934356!2d-35.87859731792896!3f49.369154673341875!4f16.329432790507155!5f1.4655786640268316",
-            "Av. Marechal Floriano Peixoto 4": "https://www.google.com/maps/embed?pb=!4v1761678237210!6m8!1m7!1spNZF8cXJaD_aLnLVTHoGVQ!2m2!1d-7.217353909934356!2d-35.87859731792896!3f49.369154673341875!4f16.329432790507155!5f1.4655786640268316",
-
-            "Centro 8": "https://www.google.com/maps/embed?pb=!4v1761679433787!6m8!1m7!1s9bayy9QvcHJYf2y3GNt6Wg!2m2!1d-7.217563705250519!2d-35.88486323374517!3f14.170129032310378!4f50.78829956575555!5f1.5132633358619052",
-            "Rua Venâncio Neiva": "https://www.google.com/maps/embed?pb=!4v1761679433787!6m8!1m7!1s9bayy9QvcHJYf2y3GNt6Wg!2m2!1d-7.217563705250519!2d-35.88486323374517!3f14.170129032310378!4f50.78829956575555!5f1.5132633358619052",
-
-            "Rua Semeão Leal": "https://www.google.com/maps/embed?pb=!4v1761679672920!6m8!1m7!1sL63cVO-yRnI2ltWFTptQZA!2m2!1d-7.219015731991563!2d-35.88403697664409!3f4.239512537094721!4f19.452005639311224!5f1.604710285487064",
-            "Centro 9": "https://www.google.com/maps/embed?pb=!4v1761679672920!6m8!1m7!1sL63cVO-yRnI2ltWFTptQZA!2m2!1d-7.219015731991563!2d-35.88403697664409!3f4.239512537094721!4f19.452005639311224!5f1.604710285487064",
-
-            "São José 3": "https://www.google.com/maps/embed?pb=!4v1761679854679!6m8!1m7!1smnCjiV0xlqPhVCzrXSGCcg!2m2!1d-7.224691004482108!2d-35.89211997054888!3f188.16291613072312!4f22.988737815739412!5f0.7820865974627469",
-            "Praça do Trabalho": "https://www.google.com/maps/embed?pb=!4v1761679854679!6m8!1m7!1smnCjiV0xlqPhVCzrXSGCcg!2m2!1d-7.224691004482108!2d-35.89211997054888!3f188.16291613072312!4f22.988737815739412!5f0.7820865974627469",
-
-            "Rua Lino Gomes da Silva": "https://www.google.com/maps/embed?pb=!4v1761680182647!6m8!1m7!1sd8qcJ1FzOp2yYZyHrIxa4Q!2m2!1d-7.223579459535138!2d-35.89030370778112!3f36.984050505822836!4f12.803056379743083!5f1.5365362823413857",
-            "São José 4": "https://www.google.com/maps/embed?pb=!4v1761680182647!6m8!1m7!1sd8qcJ1FzOp2yYZyHrIxa4Q!2m2!1d-7.223579459535138!2d-35.89030370778112!3f36.984050505822836!4f12.803056379743083!5f1.5365362823413857",
-
-            "Centro 10": "https://www.google.com/maps/embed?pb=!4v1761680478191!6m8!1m7!1scWsMrjEJUN4Y1pqp_cb4fQ!2m2!1d-7.221837614036589!2d-35.88758035779031!3f123.97235503171491!4f35.62256924593285!5f1.6047934451340988",
-            "Rua Treze de Maio": "https://www.google.com/maps/embed?pb=!4v1761680478191!6m8!1m7!1scWsMrjEJUN4Y1pqp_cb4fQ!2m2!1d-7.221837614036589!2d-35.88758035779031!3f123.97235503171491!4f35.62256924593285!5f1.6047934451340988",
-
-
-            "Rua Sebastião Donato 2": "https://www.google.com/maps/embed?pb=!4v1761681342782!6m8!1m7!1svkc7SigFHxB47TdV26aAFQ!2m2!1d-7.225697064579344!2d-35.88447630101691!3f244.56789744319596!4f12.38079890957259!5f1.5365362823413857",
-            "Centro 11": "https://www.google.com/maps/embed?pb=!4v1761681342782!6m8!1m7!1svkc7SigFHxB47TdV26aAFQ!2m2!1d-7.225697064579344!2d-35.88447630101691!3f244.56789744319596!4f12.38079890957259!5f1.5365362823413857",
-
-            "São José 5": "https://www.google.com/maps/embed?pb=!4v1761681585683!6m8!1m7!1sv2m4jleAon6XcinyRu_3qQ!2m2!1d-7.228546552764636!2d-35.8934179287956!3f339.97533263161154!4f18.570684957694567!5f0.8993588082306363",
-            "Av. Dom Pedro I": "https://www.google.com/maps/embed?pb=!4v1761681585683!6m8!1m7!1sv2m4jleAon6XcinyRu_3qQ!2m2!1d-7.228546552764636!2d-35.8934179287956!3f339.97533263161154!4f18.570684957694567!5f0.8993588082306363",
-            "Av. Dom Pedro I": "https://www.google.com/maps/embed?pb=!4v1761681585683!6m8!1m7!1sv2m4jleAon6XcinyRu_3qQ!2m2!1d-7.228546552764636!2d-35.8934179287956!3f339.97533263161154!4f18.570684957694567!5f0.8993588082306363",
-
+        // Google Maps para cada EMPENA (não mais para cada bairro)
+        const mapasEmpenas = {
+            "Empena Alto Branco": "https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
+            "Empena Santo Antônio": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
+            "Empena Centro 1": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
+            "Empena Centro 2": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
+            "Empena Catolé(Av. Canal)": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
+            "Empena São José 1": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
+            "Empena Santa Teresinha": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
+            "Empena Catolé(R. Vig. Calixto)": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
+            "Empena Centenário": "https://www.google.com/maps/embed?pb=!4v1761671758078!6m8!1m7!1sUiENPNe4L6qTsCMeQyNuyg!2m2!1d-7.227425420748289!2d-35.90126367712924!3f279.616573297451!4f29.702127353515678!5f0.7820865974627469",
+            "Empena Centro 3": "https://www.google.com/maps/embed?pb=!4v1761672265301!6m8!1m7!1sEjRkrB_h9qOjFPYFMVSYCw!2m2!1d-7.217113821390524!2d-35.88598169399577!3f320.9939722057087!4f37.582719366257365!5f0.7820865974627469",
+            "Empena Centro 4": "https://www.google.com/maps/embed?pb=!4v1761673069101!6m8!1m7!1stLk2Sgi1tSz3mZKGWJslyw!2m2!1d-7.220813353790592!2d-35.88302335292972!3f350.7382719765872!4f22.269199263968602!5f1.5365362823413857",
+            "Empena São José 2": "https://www.google.com/maps/embed?pb=!4v1761673824595!6m8!1m7!1si1wuEBJjo9szwxtPrZKtSw!2m2!1d-7.22598356954409!2d-35.88575983265802!3f65.93794627129968!4f25.313284656880512!5f0.7820865974627469",
+            "Empena Prata": "https://www.google.com/maps/embed?pb=!4v1761674165250!6m8!1m7!1soTnDYQ82LbKQfpMiBG5okQ!2m2!1d-7.219293436539906!2d-35.89533838554095!3f255.78391032331726!4f29.946784136086194!5f0.7820865974627469",
+            "Empena Centro 5": "https://www.google.com/maps/embed?pb=!4v1761674647843!6m8!1m7!1sfdLvReWBwB9Wxifi-39g4A!2m2!1d-7.213459466481239!2d-35.88932392462118!3f203.95121773890318!4f33.97297297562574!5f0.747649591134284",
+            "Empena José Pinheiro 1": "https://www.google.com/maps/embed?pb=!4v1761675356062!6m8!1m7!1s3SsNdGfHTnNb-yViC5Cvcw!2m2!1d-7.228033168463563!2d-35.87439376034003!3f349.844435111335!4f10.275788419642154!5f1.5366184664772655",
+            "Empena José Pinheiro 2": "https://www.google.com/maps/embed?pb=!4v1761676036740!6m8!1m7!1s0NtX_6KTzkSGs0FJKFf4aw!2m2!1d-7.22716108870017!2d-35.87210376520341!3f216.63880926326647!4f23.461197276374506!5f0.7820865974627469",
+            "Empena José Pinheiro 3": "https://www.google.com/maps/embed?pb=!4v1761676416851!6m8!1m7!1sd7uPzPJ7Kt5COwslY9rCFg!2m2!1d-7.221496339482704!2d-35.8737640058223!3f189.29001103641554!4f18.645202482380682!5f1.4837964843781664",
+            "Empena Centro 6": "https://www.google.com/maps/embed?pb=!4v1761677530227!6m8!1m7!1smgrzpcWnEd-mL-5WHdADBg!2m2!1d-7.21852666241489!2d-35.88309636687061!3f109.82773392878244!4f41.24072631415214!5f0.7820865974627469",
+            "Empena Centro 7": "https://www.google.com/maps/embed?pb=!4v1761677751350!6m8!1m7!1suZIwfdJggZ_ZtNRghh0iKw!2m2!1d-7.218259508990137!2d-35.88335266356343!3f172.04484776198245!4f19.390455297501205!5f1.5365362823394726",
+            "Empena Castelo Branco": "https://www.google.com/maps/embed?pb=!4v1761678237210!6m8!1m7!1spNZF8cXJaD_aLnLVTHoGVQ!2m2!1d-7.217353909934356!2d-35.87859731792896!3f49.369154673341875!4f16.329432790507155!5f1.4655786640268316",
+            "Empena Centro 8": "https://www.google.com/maps/embed?pb=!4v1761679433787!6m8!1m7!1s9bayy9QvcHJYf2y3GNt6Wg!2m2!1d-7.217563705250519!2d-35.88486323374517!3f14.170129032310378!4f50.78829956575555!5f1.5132633358619052",
+            "Empena Centro 9": "https://www.google.com/maps/embed?pb=!4v1761679672920!6m8!1m7!1sL63cVO-yRnI2ltWFTptQZA!2m2!1d-7.219015731991563!2d-35.88403697664409!3f4.239512537094721!4f19.452005639311224!5f1.604710285487064",
+            "Empena São José 3": "https://www.google.com/maps/embed?pb=!4v1761679854679!6m8!1m7!1smnCjiV0xlqPhVCzrXSGCcg!2m2!1d-7.224691004482108!2d-35.89211997054888!3f188.16291613072312!4f22.988737815739412!5f0.7820865974627469",
+            "Empena São José 4": "https://www.google.com/maps/embed?pb=!4v1761680182647!6m8!1m7!1sd8qcJ1FzOp2yYZyHrIxa4Q!2m2!1d-7.223579459535138!2d-35.89030370778112!3f36.984050505822836!4f12.803056379743083!5f1.5365362823413857",
+            "Empena Centro 10": "https://www.google.com/maps/embed?pb=!4v1761680478191!6m8!1m7!1scWsMrjEJUN4Y1pqp_cb4fQ!2m2!1d-7.221837614036589!2d-35.88758035779031!3f123.97235503171491!4f35.62256924593285!5f1.6047934451340988",
+            "Empena Centro 11": "https://www.google.com/maps/embed?pb=!4v1761681342782!6m8!1m7!1svkc7SigFHxB47TdV26aAFQ!2m2!1d-7.225697064579344!2d-35.88447630101691!3f244.56789744319596!4f12.38079890957259!5f1.5365362823413857",
+            "Empena São José 5": "https://www.google.com/maps/embed?pb=!4v1761681585683!6m8!1m7!1sv2m4jleAon6XcinyRu_3qQ!2m2!1d-7.228546552764636!2d-35.8934179287956!3f339.97533263161154!4f18.570684957694567!5f0.8993588082306363"
         };
 
         // Ignorar Acentos
@@ -641,7 +557,14 @@
         }
 
         function buscarLinhas() {
-            const input = document.getElementById('bairrosInput').value;
+            const input = document.getElementById('bairrosInput').value.trim();
+            
+            // Validação de entrada
+            if (!input) {
+                document.getElementById('resultado').innerHTML = "<span style='color: #cc0000;'>Por favor, digite um bairro para consultar.</span>";
+                return;
+            }
+            
             const bairrosProcurados = input.split(',').map(b => normalizar(b.trim()));
 
             // Mostrar loading
@@ -656,6 +579,8 @@
                 
                 // Para cada bairro procurado
                 bairrosProcurados.forEach(bairroProcurado => {
+                    if (!bairroProcurado) return; // Pular entradas vazias
+                    
                     // Encontrar o bairro correspondente na base de dados
                     const bairroEncontrado = dados.find(d => normalizar(d.bairro) === bairroProcurado);
                     
@@ -665,7 +590,7 @@
                                 <div class="bairro-title">${bairroEncontrado.bairro}</div>
                                 <div class="linhas-list">
                                     ${bairroEncontrado.empenas.map(empena => 
-                                        `<button class="linha-btn" onclick="mostrarDetalhesLinha('${empena}', '${bairroEncontrado.bairro}')">${empena}</button>`
+                                        `<button class="linha-btn" onclick="mostrarDetalhesEmpena('${empena}')">${empena}</button>`
                                     ).join('')}
                                 </div>
                             </div>
@@ -680,6 +605,11 @@
                     }
                 });
                 
+                // Se não houver resultados válidos
+                if (!resultadosHTML) {
+                    resultadosHTML = "<div class='no-linhas'>Nenhum bairro válido foi informado.</div>";
+                }
+                
                 document.getElementById('resultado').innerHTML = resultadosHTML;
                 document.getElementById('resultado').className = "";
                 
@@ -688,51 +618,59 @@
             }, 800);
         }
 
-        function mostrarDetalhesLinha(numeroLinha, bairro) {
-            const bairrosComEstaRota = dados.filter(item => item.empenas.includes(numeroLinha));
-            
+        function mostrarDetalhesEmpena(empena) {
             // Verifica se tem imagem especial, senão usa a padrão
-            const imagemLinha = imagensEspeciais[numeroLinha] || "https://i.imgur.com/ygxe7QR.png";
+            const imagemEmpena = imagensEspeciais[empena] || "https://i.imgur.com/ygxe7QR.png";
             
-            // Obter o mapa específico para o bairro
-            const mapaBairro = mapasBairros[bairro] || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.258663292987!2d-35.88872292501706!3d-7.215845392848311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac1f4d8b1b3f3b%3A0x5c5e5c5e5c5e5c5e!2sCampina%20Grande%20-%20PB!5e0!3m2!1spt-BR!2sbr!4v1234567890";
+            // Obter o mapa específico para a empena
+            const mapaEmpena = mapasEmpenas[empena] || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.258663292987!2d-35.88872292501706!3d-7.215845392848311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ac1f4d8b1b3f3b%3A0x5c5e5c5e5c5e5c5e!2sCampina%20Grande%20-%20PB!5e0!3m2!1spt-BR!2sbr!4v1234567890";
             
             let modalHTML = "";
             
-            // Mapa da Linha (imagem especial)
+            // Mapa da Empena (imagem especial)
             modalHTML += `
                 <div class="linha-info">
-                    <div class="linha-descricao">Mapa da ${numeroLinha}:</div>
-
+                    <div class="linha-descricao">Mapa da ${empena}:</div>
                     <div style="text-align: center; margin: 15px 0;">
-                        <img src="${imagemLinha}" 
-                             alt="Mapa da Linha ${numeroLinha}" 
+                        <img src="${imagemEmpena}" 
+                             alt="Mapa da Empena ${empena}" 
                              style="max-width: 600px; border-radius: 8px; border: 2px solid #cc0000;">
                     </div>
                 </div>
             `;
             
-            // Google Maps do Bairro
+            // Google Maps da Empena
             modalHTML += `
                 <div class="linha-info">
-                    <div class="linha-descricao">Localização - ${bairro}:</div>
+                    <div class="linha-descricao">Localização da ${empena}:</div>
                     <div style="text-align: center; margin: 15px 0;">
                         <iframe 
-                            src="${mapaBairro}" 
+                            src="${mapaEmpena}" 
                             width="100%" 
                             height="400" 
                             style="border:0; border-radius: 8px;" 
                             allowfullscreen="" 
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
-                            
                         </iframe>
-                        
                     </div>
                 </div>
             `;
 
-            document.getElementById('modalLinhaNumero').textContent = `Linha ${numeroLinha} - ${bairro}`;
+            // Informações adicionais sobre a empena
+            modalHTML += `
+                <div class="linha-info">
+                    <div class="linha-descricao">Informações:</div>
+                    <div style="padding: 10px; background: #f8f9fa; border-radius: 8px;">
+                        <p><strong>Empena:</strong> ${empena}</p>
+                        <p><strong>Status:</strong> Ativa</p>
+                        <p><strong>Tipo:</strong> Empena de Ônibus</p>
+                        <p><strong>Horário de Funcionamento:</strong> 05:00 - 23:00</p>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modalLinhaNumero').textContent = `${empena}`;
             document.getElementById('modalConteudo').innerHTML = modalHTML;
             document.getElementById('linhaModal').style.display = 'flex';
         }
