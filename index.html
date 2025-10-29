@@ -348,6 +348,8 @@
             position: relative;
             margin: 20px 0;
             text-align: center;
+            height: 350px;
+            overflow: hidden;
         }
 
         .amostragem {
@@ -356,18 +358,17 @@
             align-items: center;
             margin: 0 auto;
             max-width: 400px;
+            height: 300px;
+            position: relative;
         }
 
         .amostragem img {
             max-width: 100%;
-            max-height: 600px;
+            max-height: 100%;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-
-        .amostragem img:hover {
-            transform: scale(1.02);
+            transition: all 0.3s ease-in-out;
+            position: absolute;
         }
 
         .pass_img, .pass_img2 {
@@ -408,9 +409,15 @@
 
         .contador-imagem {
             text-align: center;
-            margin-top: 10px;
-            color: #666;
-            font-size: 14px;
+            margin-top: 15px;
+            color: #cc0000;
+            font-size: 16px;
+            font-weight: bold;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         @media (max-width: 768px) {
@@ -461,6 +468,14 @@
                 width: 40px;
                 height: 40px;
                 font-size: 16px;
+            }
+
+            .galeria-container {
+                height: 300px;
+            }
+
+            .amostragem {
+                height: 250px;
             }
         }
     </style>
@@ -540,10 +555,13 @@
         // ========== GALERIA DE IMAGENS ==========
         const galeriaImagens = [
             "galeria/img3.jpg",
+            "galeria/img9.jpg",
+            "galeria/img20.jpg",
             "galeria/img21.jpg",
         ];
 
         let imagemIndex = 0;
+        let estaTransicionando = false;
 
         // Função para inicializar a galeria
         function inicializarGaleria() {
@@ -552,39 +570,76 @@
             
             if (imagemAtual && galeriaImagens.length > 0) {
                 imagemAtual.src = galeriaImagens[imagemIndex];
+                atualizarContador();
+                imagemAtual.style.transform = 'translateX(0)';
+                imagemAtual.style.opacity = '1';
+            }
+        }
+
+        // Função para atualizar o contador
+        function atualizarContador() {
+            const contador = document.getElementById('contador');
+            if (contador) {
                 contador.textContent = `${imagemIndex + 1}/${galeriaImagens.length}`;
             }
         }
 
-        // Função para próxima imagem
+        // Função para próxima imagem com transição lateral
         function proximaImagem() {
-            imagemIndex = (imagemIndex + 1) % galeriaImagens.length;
-            atualizarGaleria();
-        }
-
-        // Função para imagem anterior
-        function imagemAnterior() {
-            imagemIndex = (imagemIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
-            atualizarGaleria();
-        }
-
-        // Função para atualizar a galeria
-        function atualizarGaleria() {
-            const imagemAtual = document.getElementById('imagemAtual');
-            const contador = document.getElementById('contador');
+            if (estaTransicionando) return;
             
-            if (imagemAtual && galeriaImagens.length > 0) {
-                // Efeito de fade out
-                imagemAtual.style.opacity = '0';
+            estaTransicionando = true;
+            const imagemAtual = document.getElementById('imagemAtual');
+            
+            // Efeito de saída para a esquerda
+            imagemAtual.style.transform = 'translateX(-100%)';
+            imagemAtual.style.opacity = '0';
+            
+            setTimeout(() => {
+                imagemIndex = (imagemIndex + 1) % galeriaImagens.length;
+                imagemAtual.src = galeriaImagens[imagemIndex];
+                atualizarContador();
                 
+                // Posiciona a nova imagem à direita (fora da tela)
+                imagemAtual.style.transform = 'translateX(100%)';
+                imagemAtual.style.opacity = '1';
+                
+                // Efeito de entrada da direita para o centro
                 setTimeout(() => {
-                    imagemAtual.src = galeriaImagens[imagemIndex];
-                    contador.textContent = `${imagemIndex + 1}/${galeriaImagens.length}`;
-                    
-                    // Efeito de fade in
+                    imagemAtual.style.transform = 'translateX(0)';
                     imagemAtual.style.opacity = '1';
-                }, 200);
-            }
+                    estaTransicionando = false;
+                }, 50);
+            }, 300);
+        }
+
+        // Função para imagem anterior com transição lateral
+        function imagemAnterior() {
+            if (estaTransicionando) return;
+            
+            estaTransicionando = true;
+            const imagemAtual = document.getElementById('imagemAtual');
+            
+            // Efeito de saída para a direita
+            imagemAtual.style.transform = 'translateX(100%)';
+            imagemAtual.style.opacity = '0';
+            
+            setTimeout(() => {
+                imagemIndex = (imagemIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
+                imagemAtual.src = galeriaImagens[imagemIndex];
+                atualizarContador();
+                
+                // Posiciona a nova imagem à esquerda (fora da tela)
+                imagemAtual.style.transform = 'translateX(-100%)';
+                imagemAtual.style.opacity = '1';
+                
+                // Efeito de entrada da esquerda para o centro
+                setTimeout(() => {
+                    imagemAtual.style.transform = 'translateX(0)';
+                    imagemAtual.style.opacity = '1';
+                    estaTransicionando = false;
+                }, 50);
+            }, 300);
         }
 
         // ========== SISTEMA DE CONSULTA DE EMPENAS ==========
@@ -748,6 +803,7 @@
                             <div class="bairro-result">
                                 <div class="bairro-title">${bairroEncontrado.bairro}</div>
                                 <div style="font-size: 14px; color: #666; margin-bottom: 8px;">
+                                    Inclui: ${bairroEncontrado.variacoes.join(', ')}
                                 </div>
                                 <div class="linhas-list">
                                     ${bairroEncontrado.empenas.map(empena => 
@@ -825,6 +881,8 @@
                     <div style="padding: 10px; background: #f8f9fa; border-radius: 8px;">
                         <p><strong>Empena:</strong> ${empena}</p>
                         <p><strong>Status:</strong> Ativa</p>
+                        <p><strong>Tipo:</strong> Empena de Ônibus</p>
+                        <p><strong>Horário de Funcionamento:</strong> 05:00 - 23:00</p>
                     </div>
                 </div>
             `;
