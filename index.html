@@ -343,6 +343,76 @@
             margin-left: 230px;
         }
 
+        /* Estilos para a galeria de imagens */
+        .galeria-container {
+            position: relative;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .amostragem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+
+        .amostragem img {
+            max-width: 100%;
+            max-height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .amostragem img:hover {
+            transform: scale(1.02);
+        }
+
+        .pass_img, .pass_img2 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .pass_img {
+            right: 20px;
+        }
+
+        .pass_img2 {
+            left: 20px;
+        }
+
+        .pass_img button, .pass_img2 button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #cc0000;
+            color: white;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pass_img button:hover, .pass_img2 button:hover {
+            background: #a30000;
+            transform: scale(1.1);
+        }
+
+        .contador-imagem {
+            text-align: center;
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -378,6 +448,20 @@
                 margin-left: 0;
                 margin-right: 0;
             }
+
+            .pass_img {
+                right: 10px;
+            }
+
+            .pass_img2 {
+                left: 10px;
+            }
+
+            .pass_img button, .pass_img2 button {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -400,7 +484,26 @@
             <button type="button" id="voltar" onclick="voltarpagina2()" class="botao2">NATAL</button>
             <button type="button" id="voltar" onclick="voltarpagina3()">JOÃO PESSOA</button>
         </div>
-        
+
+        <!-- Galeria de Imagens -->
+        <div class="galeria-container">
+            <div class="pass_img2">
+                <button type="button" onclick="imagemAnterior()">❮</button>
+            </div>
+
+            <div class="amostragem">   
+                <img id="imagemAtual" src="" alt="Imagem da galeria">
+            </div>
+
+            <div class="pass_img">
+                <button type="button" onclick="proximaImagem()">❯</button>
+            </div>
+
+            <div class="contador-imagem">
+                <span id="contador">1/5</span>
+            </div>
+        </div>
+
         <div class="content">
             <div class="input-group">
                 <label for="bairrosInput">Digite o Bairro Desejado:(Não Precisa de Acentos, Nem letras maiúsculas)</label>
@@ -434,59 +537,109 @@
     </div>
 
     <script>
+        // ========== GALERIA DE IMAGENS ==========
+        const galeriaImagens = [
+            "galeria/img3.jpg",
+            "galeria/img21.jpg",
+        ];
+
+        let imagemIndex = 0;
+
+        // Função para inicializar a galeria
+        function inicializarGaleria() {
+            const imagemAtual = document.getElementById('imagemAtual');
+            const contador = document.getElementById('contador');
+            
+            if (imagemAtual && galeriaImagens.length > 0) {
+                imagemAtual.src = galeriaImagens[imagemIndex];
+                contador.textContent = `${imagemIndex + 1}/${galeriaImagens.length}`;
+            }
+        }
+
+        // Função para próxima imagem
+        function proximaImagem() {
+            imagemIndex = (imagemIndex + 1) % galeriaImagens.length;
+            atualizarGaleria();
+        }
+
+        // Função para imagem anterior
+        function imagemAnterior() {
+            imagemIndex = (imagemIndex - 1 + galeriaImagens.length) % galeriaImagens.length;
+            atualizarGaleria();
+        }
+
+        // Função para atualizar a galeria
+        function atualizarGaleria() {
+            const imagemAtual = document.getElementById('imagemAtual');
+            const contador = document.getElementById('contador');
+            
+            if (imagemAtual && galeriaImagens.length > 0) {
+                // Efeito de fade out
+                imagemAtual.style.opacity = '0';
+                
+                setTimeout(() => {
+                    imagemAtual.src = galeriaImagens[imagemIndex];
+                    contador.textContent = `${imagemIndex + 1}/${galeriaImagens.length}`;
+                    
+                    // Efeito de fade in
+                    imagemAtual.style.opacity = '1';
+                }, 200);
+            }
+        }
+
+        // ========== SISTEMA DE CONSULTA DE EMPENAS ==========
         // Dados organizados e corrigidos
         const dados = [
-    {
-        bairro: "Alto Branco",
-        variacoes: ["Alto Branco", "Rua Ordenez Trovão de Melo"],
-        empenas: ["Empena Alto Branco"]
-    },
-    {
-        bairro: "Santo Antônio", 
-        variacoes: ["Santo Antônio", "Av. Mal. Floriano Peixoto 2"],
-        empenas: ["Empena Santo Antônio"]
-    },
-    {
-        bairro: "Centro",
-        variacoes: ["Centro 1", "Centro 2", "Centro 3", "Centro 4", "Centro 5", "Centro 6", "Centro 7", "Centro 8", "Centro 9", "Centro 10", "Centro 11", "Rua Sebastião Donato 1", "Rua Sebastião Donato 2", "Rua João Suassuana", "Rua Vidal Negreiros", "Rua Siqueira Campos", "Rua Maciel Pinheiro 1", "Rua Maciel Pinheiro 2", "Rua Venâncio Neiva", "Rua Semeão Leal", "Rua Treze de Maio"],
-        empenas: ["Empena Centro 1", "Empena Centro 2", "Empena Centro 3", "Empena Centro 4", "Empena Centro 5", "Empena Centro 6", "Empena Centro 7", "Empena Centro 8", "Empena Centro 9", "Empena Centro 10", "Empena Centro 11"]
-    },
-    {
-        bairro: "Catolé",
-        variacoes: ["Catolé 1", "Catolé 2", "Av. Canal", "Rua Vig. Calixto"],
-        empenas: ["Empena Catolé(Av. Canal)", "Empena Catolé(R. Vig. Calixto)"]
-    },
-    {
-        bairro: "São José",
-        variacoes: ["São José 1", "São José 2", "São José 3", "São José 4", "São José 5", "Av. Dr. Elpídio de Almeida", "Rua Dr. João Moura", "Praça do Trabalho", "Rua Lino Gomes da Silva", "Av. Dom Pedro I"],
-        empenas: ["Empena São José 1", "Empena São José 2", "Empena São José 3", "Empena São José 4", "Empena São José 5"]
-    },
-    {
-        bairro: "Santa Teresinha",
-        variacoes: ["Santa Teresinha", "Br 230"],
-        empenas: ["Empena Santa Teresinha"]
-    },
-    {
-        bairro: "Centenário",
-        variacoes: ["Centenário 1", "Av. Marechal Floriano Peixoto 2"],
-        empenas: ["Empena Centenário"]
-    },
-    {
-        bairro: "Prata",
-        variacoes: ["Prata 1", "Rua Nilo Peçanha"],
-        empenas: ["Empena Prata"]
-    },
-    {
-        bairro: "José Pinheiro",
-        variacoes: ["José Pinheiro 1", "José Pinheiro 2", "José Pinheiro 3", "Av. Prefeito Severino Bezerra", "Rua Campos Sales 1", "Rua Campos Sales 2"],
-        empenas: ["Empena José Pinheiro 1", "Empena José Pinheiro 2", "Empena José Pinheiro 3"]
-    },
-    {
-        bairro: "Castelo Branco",
-        variacoes: ["Castelo Branco", "Av. Marechal Floriano Peixoto 4"],
-        empenas: ["Empena Castelo Branco"]
-    }
-
+            {
+                bairro: "Alto Branco",
+                variacoes: ["Alto Branco", "Rua Ordenez Trovão de Melo"],
+                empenas: ["Empena Alto Branco"]
+            },
+            {
+                bairro: "Santo Antônio", 
+                variacoes: ["Santo Antônio", "Av. Mal. Floriano Peixoto 2"],
+                empenas: ["Empena Santo Antônio"]
+            },
+            {
+                bairro: "Centro",
+                variacoes: ["Centro 1", "Centro 2", "Centro 3", "Centro 4", "Centro 5", "Centro 6", "Centro 7", "Centro 8", "Centro 9", "Centro 10", "Centro 11", "Rua Sebastião Donato 1", "Rua Sebastião Donato 2", "Rua João Suassuana", "Rua Vidal Negreiros", "Rua Siqueira Campos", "Rua Maciel Pinheiro 1", "Rua Maciel Pinheiro 2", "Rua Venâncio Neiva", "Rua Semeão Leal", "Rua Treze de Maio"],
+                empenas: ["Empena Centro 1", "Empena Centro 2", "Empena Centro 3", "Empena Centro 4", "Empena Centro 5", "Empena Centro 6", "Empena Centro 7", "Empena Centro 8", "Empena Centro 9", "Empena Centro 10", "Empena Centro 11"]
+            },
+            {
+                bairro: "Catolé",
+                variacoes: ["Catolé 1", "Catolé 2", "Av. Canal", "Rua Vig. Calixto"],
+                empenas: ["Empena Catolé(Av. Canal)", "Empena Catolé(R. Vig. Calixto)"]
+            },
+            {
+                bairro: "São José",
+                variacoes: ["São José 1", "São José 2", "São José 3", "São José 4", "São José 5", "Av. Dr. Elpídio de Almeida", "Rua Dr. João Moura", "Praça do Trabalho", "Rua Lino Gomes da Silva", "Av. Dom Pedro I"],
+                empenas: ["Empena São José 1", "Empena São José 2", "Empena São José 3", "Empena São José 4", "Empena São José 5"]
+            },
+            {
+                bairro: "Santa Teresinha",
+                variacoes: ["Santa Teresinha", "Br 230"],
+                empenas: ["Empena Santa Teresinha"]
+            },
+            {
+                bairro: "Centenário",
+                variacoes: ["Centenário 1", "Av. Marechal Floriano Peixoto 2"],
+                empenas: ["Empena Centenário"]
+            },
+            {
+                bairro: "Prata",
+                variacoes: ["Prata 1", "Rua Nilo Peçanha"],
+                empenas: ["Empena Prata"]
+            },
+            {
+                bairro: "José Pinheiro",
+                variacoes: ["José Pinheiro 1", "José Pinheiro 2", "José Pinheiro 3", "Av. Prefeito Severino Bezerra", "Rua Campos Sales 1", "Rua Campos Sales 2"],
+                empenas: ["Empena José Pinheiro 1", "Empena José Pinheiro 2", "Empena José Pinheiro 3"]
+            },
+            {
+                bairro: "Castelo Branco",
+                variacoes: ["Castelo Branco", "Av. Marechal Floriano Peixoto 4"],
+                empenas: ["Empena Castelo Branco"]
+            }
         ];
 
         // Imagens especiais (mapas das linhas)
@@ -520,7 +673,7 @@
             "Empena São José 5": "img/26.jpg"
         };
 
-        // Google Maps para cada EMPENA (não mais para cada bairro)
+        // Google Maps para cada EMPENA
         const mapasEmpenas = {
             "Empena Alto Branco": "https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
             "Empena Santo Antônio": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
@@ -576,18 +729,26 @@
             // Simular um tempo de processamento
             setTimeout(() => {
                 let resultadosHTML = "";
+                let encontrouResultados = false;
                 
                 // Para cada bairro procurado
                 bairrosProcurados.forEach(bairroProcurado => {
                     if (!bairroProcurado) return; // Pular entradas vazias
                     
                     // Encontrar o bairro correspondente na base de dados
-                    const bairroEncontrado = dados.find(d => normalizar(d.bairro) === bairroProcurado);
+                    // Agora verificamos tanto o nome principal quanto as variações
+                    const bairroEncontrado = dados.find(d => 
+                        normalizar(d.bairro) === bairroProcurado || 
+                        d.variacoes.some(v => normalizar(v) === bairroProcurado)
+                    );
                     
                     if (bairroEncontrado) {
+                        encontrouResultados = true;
                         resultadosHTML += `
                             <div class="bairro-result">
                                 <div class="bairro-title">${bairroEncontrado.bairro}</div>
+                                <div style="font-size: 14px; color: #666; margin-bottom: 8px;">
+                                </div>
                                 <div class="linhas-list">
                                     ${bairroEncontrado.empenas.map(empena => 
                                         `<button class="linha-btn" onclick="mostrarDetalhesEmpena('${empena}')">${empena}</button>`
@@ -606,7 +767,7 @@
                 });
                 
                 // Se não houver resultados válidos
-                if (!resultadosHTML) {
+                if (!encontrouResultados) {
                     resultadosHTML = "<div class='no-linhas'>Nenhum bairro válido foi informado.</div>";
                 }
                 
@@ -664,8 +825,6 @@
                     <div style="padding: 10px; background: #f8f9fa; border-radius: 8px;">
                         <p><strong>Empena:</strong> ${empena}</p>
                         <p><strong>Status:</strong> Ativa</p>
-                        <p><strong>Tipo:</strong> Empena de Ônibus</p>
-                        <p><strong>Horário de Funcionamento:</strong> 05:00 - 23:00</p>
                     </div>
                 </div>
             `;
@@ -714,6 +873,11 @@
         function voltarpagina3() {
             window.location.href = "Rotas João Pessoa.html";             
         }
+
+        // Inicializar a galeria quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            inicializarGaleria();
+        });
     </script>
 </body>
 </html>
