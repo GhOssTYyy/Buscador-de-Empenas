@@ -913,13 +913,23 @@
             
             let modalHTML = "";
             
+           // Informações adicionais sobre a empena
+            modalHTML += `
+                <div class="linha-info">
+                    <div class="linha-descricao"></div>
+                    <div style="padding: 10px; background: #f8f9fa; border-radius: 8px; font-size:20px;">
+                        <p><strong>Status:</strong> Disponível</p>
+                    </div>
+                </div>
+            `;
+
             // Mapa da Empena (imagem especial)
             modalHTML += `
                 <div class="linha-info">
-                    <div class="linha-descricao">Mapa da ${empena}:</div>
+                    <div class="linha-descricao">${empena}:</div>
                     <div style="text-align: center; margin: 15px 0;">
                         <img src="${imagemEmpena}" 
-                             alt="Mapa da Empena ${empena}" 
+                             alt="Empena ${empena}" 
                              style="max-width: 600px; border-radius: 8px; border: 2px solid #cc0000;">
                     </div>
                 </div>
@@ -939,19 +949,6 @@
                             loading="lazy" 
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
-                    </div>
-                </div>
-            `;
-
-            // Informações adicionais sobre a empena
-            modalHTML += `
-                <div class="linha-info">
-                    <div class="linha-descricao">Informações:</div>
-                    <div style="padding: 10px; background: #f8f9fa; border-radius: 8px;">
-                        <p><strong>Empena:</strong> ${empena}</p>
-                        <p><strong>Status:</strong> Ativa</p>
-                        <p><strong>Tipo:</strong> Empena de Ônibus</p>
-                        <p><strong>Horário de Funcionamento:</strong> 05:00 - 23:00</p>
                     </div>
                 </div>
             `;
