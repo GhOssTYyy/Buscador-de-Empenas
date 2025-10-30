@@ -346,7 +346,7 @@
         /* Estilos para a galeria de imagens */
         .galeria-container {
             position: relative;
-            margin: 20px 0;
+            margin-top: 60px;
             text-align: center;
             height: 350px;
             overflow: hidden;
@@ -418,6 +418,61 @@
             border-radius: 20px;
             display: inline-block;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav {
+            background: #a30000;
+            padding: 0 20px;
+            font-family: "Rubik", sans-serif;
+            font-size: 20px;
+        }
+        .nav_container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            margin-left: 150px;
+        }
+
+        .menu li {
+            position: relative;
+
+        }
+
+        .menu li a {
+            display: block;
+            color: #FFF;
+            text-decoration: none;
+            padding: 20px;
+        }
+
+        .menu li:hover {
+            background-color: #555;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown_content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            z-index: 2;
+        }
+
+        .dropdown_content a {
+            padding: 12px 16px;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown_content {
+            display: block;
         }
 
         @media (max-width: 768px) {
@@ -492,13 +547,28 @@
                 </div>
             </div>
         </div>
-     
-        <!--Botão1-->        
-        <div class="button1">
-            <button type="button" id="voltar" onclick="voltarpagina()">CARUARU</button>
-            <button type="button" id="voltar" onclick="voltarpagina2()" class="botao2">NATAL</button>
-            <button type="button" id="voltar" onclick="voltarpagina3()">JOÃO PESSOA</button>
+
+<nav>
+    <div class="nav_container">
+        <ul class="menu">
+        <li class="dropdown">
+        <strong><a href="#" class="dropdown">CIDADES</a></strong>
+        <div class="dropdown_content">
+            <a href="#">Paraíba</a>
+            <a href="#">Natal</a>
+            <a href="#">João Pessoa</a>
         </div>
+        <li class="dropdown">
+        <strong><a href="#">EMPENAS</a></strong>
+        <div class="dropdown_content">
+            <a href="#">Centro</a>
+            <a href="#">Natal</a>
+            <a href="#">João Pessoa</a>
+        </div>
+        </li>
+    </div>
+        </ul>
+</nav>
 
         <!-- Galeria de Imagens -->
         <div class="galeria-container">
