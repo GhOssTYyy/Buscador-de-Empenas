@@ -844,74 +844,70 @@
         // Dados organizados e corrigidos
         const dados = [
             {
-                bairro: "",
-                variacoes: ["", ""],
-                empenas: [""]
+                bairro: "Caruaru",
+                variacoes: ["Rua Duque de Caxias", "R. Duque de Caxias","Rua Leão Dourado","R. Leão Dourado,","Av. Rio Branco", "Avenida Rio Branco","Av. Agamenon Magalhães","Avenida Agamenon Magalhães","R. Djalma Dutra","Rua Djalma Dutra","R. Quinze de Novembro","Rua Quinze de Novembro"],
+                empenas: ["Empena Caruaru(Duque de Caxias 1)", "Empena Caruaru(Leão Dourado)","Empena Caruaru(Rio Branco 1)","Empena Caruaru(Agamenon Magalhães)","Empena Caruaru(Djalma Dutra)","Empena Caruaru(Quinze de Novembro)","Empena Caruaru(Rio Branco 2)","Empena Caruaru(Sete de Setembro)","Empena Caruaru(Martins Júnior)","Empena Caruaru(Expedicionários)","Empena Caruaru(Duque de Caxias 2)"]
             },
+
+            {
+                bairro: "Toritama",
+                variacoes: ["BR 104"],
+                empenas: ["Empena Toritama(BR 104)","Empena Toritama(Pedro Ventura)","Empena Toritama(Santa Ana)","Empena Toritama(PE 090)","Empena Toritama(Manoel da Silva 1)","Empena Toritama(Manoel da Silva 2)","Empena Toritama(Manoel da Silva 3)","Empena Toritama(Manoel da Silva 4)"]
+            },
+            
+            {
+                bairro: "Santa Cruz",
+                variacoes: ["Av. Pref. Braz de Líra","Avenida Pref. Braz de Líra"],
+                empenas: ["Empena Santa Cruz(Braz de Líra 1)","Empena Santa Cruz(Nove de Dezembro)","Empena Santa Cruz(Braz de Líra 2)","Empena Santa Cruz(Joaquim Nabuco)","Empena Santa Cruz(Braz de Líra 3)","Empena Santa Cruz(PE-160 1)","Empena Santa Cruz(Vieira da Silva)"]
+            },
+
+            {
+                bairro: "Taquaritinga",
+                variacoes: [""],
+                empenas: ["Empena Taquaritinga(Vieira da Silva)","Empena Taquaritinga(PE 160 2)"],
+
+            }
         ];
 
         // Imagens especiais (mapas das linhas)
         const imagensEspeciais = {
             "Empena Alto Branco": "img/1.jpg",
-            "Empena Santo Antônio": "img/2.jpg",
-            "Empena Centro(Sebastião Donato)": "img/3.jpg",
-            "Empena Centro(Sebastião Donato)": "img/3.jpg",
-            "Empena Catolé(Av. Canal)": "img/4.jpg",
-            "Empena São José(Elpídio de Almeida)": "img/5.jpg",
-            "Empena Santa Teresinha": "img/6.jpg",
-            "Empena Catolé(R. Vig. Calixto)": "img/7.jpg",
-            "Empena Centenário": "img/8.jpg",
-            "Empena Centro(João Suassuna)": "img/9.jpg",
-            "Empena Centro(Vidal de Negreiros)": "img/10.jpg",
-            "Empena São José(João Moura)": "img/11.jpg",
-            "Empena Prata": "img/12.jpg",
-            "Empena Centro(Siqueira Campos)": "img/13.jpg",
-            "Empena José Pinheiro(Severino Bezerra)": "img/14.jpg",
-            "Empena José Pinheiro(Campos Sales)": "img/15.jpg",
-            "Empena José Pinheiro(Campos Sales II)": "img/16.jpg",
-            "Empena Centro(Maciel Pinheiro)": "img/17.jpg",
-            "Empena Centro(Maciel Pinheiro II)": "img/18.jpg",
-            "Empena Castelo Branco": "img/19.jpg",
-            "Empena Centro(Venâncio Neiva)": "img/20.jpg",
-            "Empena Centro(Semeão Leal)": "img/21.jpg",
-            "Empena São José(Praça do Trabalho)": "img/22.jpg",
-            "Empena São José(Lino Gomes da Silva)": "img/23.jpg",
-            "Empena Centro(Treze de Maio)": "img/24.jpg",
-            "Empena Centro(Sebastião Donato II)": "img/25.jpg",
-            "Empena São José(Dom Pedro I)": "img/26.jpg",
         };
 
         // Google Maps para cada EMPENA
         const mapasEmpenas = {
-            "Empena Alto Branco": "https://www.google.com/maps/embed?pb=!4v1761590587831!6m8!1m7!1sW5o56kBegFfAxGWgc5Y5YQ!2m2!1d-7.208028080663589!2d-35.87576844078111!3f200.6637365394838!4f-5.549095420472625!5f0.7820865974627469",
-            "Empena Santo Antônio": "https://www.google.com/maps/embed?pb=!4v1761593867556!6m8!1m7!1sWt58gINxG0bs3E7wTYAzUQ!2m2!1d-7.216938397679787!2d-35.87630686254605!3f339.7039914899961!4f19.604202411930586!5f0.7820865974627469",
-            "Empena Centro(Sebastião Donato)": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
-            "Empena Centro(Sebastião Donato)": "https://www.google.com/maps/embed?pb=!4v1761594491938!6m8!1m7!1s9MJz1c8Np1AFtZaCDRaYAw!2m2!1d-7.22222035489358!2d-35.88828675313594!3f86.04282891873943!4f26.687606575782397!5f0.7820865974627469",
-            "Empena Catolé(Av. Canal)": "https://www.google.com/maps/embed?pb=!4v1761594787639!6m8!1m7!1sZeCwjMy9axVKDW0feYQkRA!2m2!1d-7.230348538386564!2d-35.88095224028532!3f76.56761782667715!4f18.470450174787572!5f0.7820865974627469",
-            "Empena São José(Elpídio de Almeida)": "https://www.google.com/maps/embed?pb=!4v1761595067352!6m8!1m7!1sljFevSz3w2AXnFiaNoMQTg!2m2!1d-7.228949390068908!2d-35.87710234612262!3f217.8195046804565!4f18.992059402313714!5f1.4001016803722055",
-            "Empena Santa Teresinha": "https://www.google.com/maps/embed?pb=!4v1761595837069!6m8!1m7!1s5oRkJaYEoIJXNkeZPQm3NA!2m2!1d-7.247887906329982!2d-35.84620333769779!3f325.104608977282!4f13.582054514253102!5f2.0243191498335147",
-            "Empena Catolé(R. Vig. Calixto)": "https://www.google.com/maps/embed?pb=!4v1761596959902!6m8!1m7!1sJNiYe9_VRUi5kA2BuflQKg!2m2!1d-7.235923725034232!2d-35.87949581762446!3f215.79883930547612!4f13.194717758777543!5f1.5364541012819717",
-            "Empena Centenário": "https://www.google.com/maps/embed?pb=!4v1761671758078!6m8!1m7!1sUiENPNe4L6qTsCMeQyNuyg!2m2!1d-7.227425420748289!2d-35.90126367712924!3f279.616573297451!4f29.702127353515678!5f0.7820865974627469",
-            "Empena Centro(João Suassuna)": "https://www.google.com/maps/embed?pb=!4v1761672265301!6m8!1m7!1sEjRkrB_h9qOjFPYFMVSYCw!2m2!1d-7.217113821390524!2d-35.88598169399577!3f320.9939722057087!4f37.582719366257365!5f0.7820865974627469",
-            "Empena Centro(Vidal de Negreiros)": "https://www.google.com/maps/embed?pb=!4v1761673069101!6m8!1m7!1stLk2Sgi1tSz3mZKGWJslyw!2m2!1d-7.220813353790592!2d-35.88302335292972!3f350.7382719765872!4f22.269199263968602!5f1.5365362823413857",
-            "Empena São José(João Moura)": "https://www.google.com/maps/embed?pb=!4v1761673824595!6m8!1m7!1si1wuEBJjo9szwxtPrZKtSw!2m2!1d-7.22598356954409!2d-35.88575983265802!3f65.93794627129968!4f25.313284656880512!5f0.7820865974627469",
-            "Empena Prata": "https://www.google.com/maps/embed?pb=!4v1761674165250!6m8!1m7!1soTnDYQ82LbKQfpMiBG5okQ!2m2!1d-7.219293436539906!2d-35.89533838554095!3f255.78391032331726!4f29.946784136086194!5f0.7820865974627469",
-            "Empena Centro(Siqueira Campos)": "https://www.google.com/maps/embed?pb=!4v1761674647843!6m8!1m7!1sfdLvReWBwB9Wxifi-39g4A!2m2!1d-7.213459466481239!2d-35.88932392462118!3f203.95121773890318!4f33.97297297562574!5f0.747649591134284",
-            "Empena José Pinheiro(Severino Bezerra)": "https://www.google.com/maps/embed?pb=!4v1761675356062!6m8!1m7!1s3SsNdGfHTnNb-yViC5Cvcw!2m2!1d-7.228033168463563!2d-35.87439376034003!3f349.844435111335!4f10.275788419642154!5f1.5366184664772655",
-            "Empena José Pinheiro(Campos Sales)": "https://www.google.com/maps/embed?pb=!4v1761676036740!6m8!1m7!1s0NtX_6KTzkSGs0FJKFf4aw!2m2!1d-7.22716108870017!2d-35.87210376520341!3f216.63880926326647!4f23.461197276374506!5f0.7820865974627469",
-            "Empena José Pinheiro(Campos Sales II)": "https://www.google.com/maps/embed?pb=!4v1761676416851!6m8!1m7!1sd7uPzPJ7Kt5COwslY9rCFg!2m2!1d-7.221496339482704!2d-35.8737640058223!3f189.29001103641554!4f18.645202482380682!5f1.4837964843781664",
-            "Empena Centro(Maciel Pinheiro)": "https://www.google.com/maps/embed?pb=!4v1761677530227!6m8!1m7!1smgrzpcWnEd-mL-5WHdADBg!2m2!1d-7.21852666241489!2d-35.88309636687061!3f109.82773392878244!4f41.24072631415214!5f0.7820865974627469",
-            "Empena Centro(Maciel Pinheiro II)": "https://www.google.com/maps/embed?pb=!4v1761677751350!6m8!1m7!1suZIwfdJggZ_ZtNRghh0iKw!2m2!1d-7.218259508990137!2d-35.88335266356343!3f172.04484776198245!4f19.390455297501205!5f1.5365362823394726",
-            "Empena Castelo Branco": "https://www.google.com/maps/embed?pb=!4v1761678237210!6m8!1m7!1spNZF8cXJaD_aLnLVTHoGVQ!2m2!1d-7.217353909934356!2d-35.87859731792896!3f49.369154673341875!4f16.329432790507155!5f1.4655786640268316",
-            "Empena Centro(Venâncio Neiva)": "https://www.google.com/maps/embed?pb=!4v1761679433787!6m8!1m7!1s9bayy9QvcHJYf2y3GNt6Wg!2m2!1d-7.217563705250519!2d-35.88486323374517!3f14.170129032310378!4f50.78829956575555!5f1.5132633358619052",
-            "Empena Centro(Semeão Leal)": "https://www.google.com/maps/embed?pb=!4v1761679672920!6m8!1m7!1sL63cVO-yRnI2ltWFTptQZA!2m2!1d-7.219015731991563!2d-35.88403697664409!3f4.239512537094721!4f19.452005639311224!5f1.604710285487064",
-            "Empena São José(Praça do Trabalho)": "https://www.google.com/maps/embed?pb=!4v1761679854679!6m8!1m7!1smnCjiV0xlqPhVCzrXSGCcg!2m2!1d-7.224691004482108!2d-35.89211997054888!3f188.16291613072312!4f22.988737815739412!5f0.7820865974627469",
-            "Empena São José(Lino Gomes da Silva)": "https://www.google.com/maps/embed?pb=!4v1761680182647!6m8!1m7!1sd8qcJ1FzOp2yYZyHrIxa4Q!2m2!1d-7.223579459535138!2d-35.89030370778112!3f36.984050505822836!4f12.803056379743083!5f1.5365362823413857",
-            "Empena Centro(Treze de Maio)": "https://www.google.com/maps/embed?pb=!4v1761680478191!6m8!1m7!1scWsMrjEJUN4Y1pqp_cb4fQ!2m2!1d-7.221837614036589!2d-35.88758035779031!3f123.97235503171491!4f35.62256924593285!5f1.6047934451340988",
-            "Empena Centro(Sebastião Donato II)": "https://www.google.com/maps/embed?pb=!4v1761681342782!6m8!1m7!1svkc7SigFHxB47TdV26aAFQ!2m2!1d-7.225697064579344!2d-35.88447630101691!3f244.56789744319596!4f12.38079890957259!5f1.5365362823413857",
-            "Empena São José 5": "https://www.google.com/maps/embed?pb=!4v1761681585683!6m8!1m7!1sv2m4jleAon6XcinyRu_3qQ!2m2!1d-7.228546552764636!2d-35.8934179287956!3f339.97533263161154!4f18.570684957694567!5f0.8993588082306363"
-        };
+            "Empena Caruaru(Duque de Caxias 1)": "https://www.google.com/maps/embed?pb=!4v1762451469927!6m8!1m7!1sqAyb_1DYQ3wOxV837dxfkw!2m2!1d-8.286328788084992!2d-35.97241794918571!3f235.18984710896842!4f25.54703762050572!5f0.7820865974627469",
+            "Empena Caruaru(Leão Dourado)": "https://www.google.com/maps/embed?pb=!4v1762451559648!6m8!1m7!1s3Qz0YYR8_FWnXcUiglmtsQ!2m2!1d-8.2883066098559!2d-35.98270927137362!3f145.43544308807805!4f23.847754597506423!5f1.5366184664772655",
+            "Empena Caruaru(Rio Branco 1)": "https://www.google.com/maps/embed?pb=!4v1762451687383!6m8!1m7!1sArL1w24JJ0TOmwXFaRu3WQ!2m2!1d-8.284947291591495!2d-35.97055536143925!3f134.36100125885503!4f37.924754058890414!5f0.7820865974627469",
+            "Empena Caruaru(Agamenon Magalhães)": "https://www.google.com/maps/embed?pb=!4v1762451914920!6m8!1m7!1sknv1HQj-6UXQi9KflC5Q-w!2m2!1d-8.273436664248473!2d-35.97440458868606!3f195.41519318900654!4f34.87437619597128!5f1.6048753708028989",
+            "Empena Caruaru(Djalma Dutra)": "https://www.google.com/maps/embed?pb=!4v1762452043134!6m8!1m7!1sDfsmt6MAFNA4eAZOYNP_Eg!2m2!1d-8.287477150205921!2d-35.9737733084386!3f26.214696235520023!4f29.007451825934112!5f0.8216427215922666",
+            "Empena Caruaru(Quinze de Novembro)": "https://www.google.com/maps/embed?pb=!4v1762452249336!6m8!1m7!1sewH-weHBLtFzoHu7xwvm0Q!2m2!1d-8.287023811801117!2d-35.97254811187161!3f59.53128246659314!4f28.435416714147664!5f1.604875370802426",
+            "Empena Caruaru(Rio Branco 2)": "https://www.google.com/maps/embed?pb=!4v1762452412086!6m8!1m7!1ssfuCw_WzPfrNUj0-gsdGnQ!2m2!1d-8.282663281422854!2d-35.97160382527539!3f174.2717174712695!4f11.739664147351476!5f2.8755842143356434",
+            "Empena Caruaru(Sete de Setembro)": "https://www.google.com/maps/embed?pb=!4v1762452919587!6m8!1m7!1s5yCoQGigXI8KXw_MFnGPkA!2m2!1d-8.286068865263328!2d-35.96942248640354!3f64.03650097765305!4f23.102465815182754!5f1.5366184664772655",
+            "Empena Caruaru(Martins Júnior)": "https://www.google.com/maps/embed?pb=!4v1762453457825!6m8!1m7!1snOBzKfVUyuH0Dyp4x7x_Pg!2m2!1d-8.285975613003036!2d-35.96824864180782!3f57.29530859560795!4f30.72619891365001!5f0.8095524737244797",
+            "Empena Caruaru(Expedicionários)": "https://www.google.com/maps/embed?pb=!4v1762453796981!6m8!1m7!1sxdwnKhufw6QOXdmIBKz9qA!2m2!1d-8.285138172577257!2d-35.96984604967782!3f340.5788257207304!4f28.25979077484969!5f1.336879492447211",
+            "Empena Caruaru(Duque de Caxias 2)": "https://www.google.com/maps/embed?pb=!4v1762454649308!6m8!1m7!1sLHCweqONf-muE_7QDEgpNg!2m2!1d-8.285559596427532!2d-35.97052005798417!3f207.67052278018224!4f29.99719082494289!5f1.1402528468092714",
+            
+            "Empena Toritama(BR 104)": "https://www.google.com/maps/embed?pb=!4v1762454980380!6m8!1m7!1spvByvkJk6rKz80LwIC1pyA!2m2!1d-8.009828887483007!2d-36.05789160219501!3f63.419589605904946!4f5.83496116455386!5f1.5366990362452673",
+            "Empena Toritama(Pedro Ventura)": "https://www.google.com/maps/embed?pb=!4v1762455487908!6m8!1m7!1shTNt4hP1JmLF5IF0v48XhA!2m2!1d-8.009165940976969!2d-36.05794711189217!3f109.18330227559328!4f21.639828100135517!5f0.7820865974627469",
+            "Empena Toritama(Santa Ana)": "https://www.google.com/maps/embed?pb=!4v1762455662330!6m8!1m7!1sHPkvPnp8O8cqc99qtF4nig!2m2!1d-8.001848422256632!2d-36.05995348293126!3f332.2863518928783!4f8.87352814157299!5f1.6048753708033723",
+            "Empena Toritama(PE 090)": "https://www.google.com/maps/embed?pb=!4v1762455819555!6m8!1m7!1sRngDY8WIJXmgS0sZQIJTHw!2m2!1d-8.002849090811578!2d-36.06021716740517!3f226.64902453539253!4f3.2388435948121526!5f2.5816745527702323",
+            "Empena Toritama(Manoel da Silva 1)": "https://www.google.com/maps/embed?pb=!4v1762458127703!6m8!1m7!1sWjlwQ-UnDUjJyjOpUuFyug!2m2!1d-8.005956035177324!2d-36.05686180301742!3f101.76612329099079!4f17.52959284403218!5f2.5817801885292613",
+            "Empena Toritama(Manoel da Silva 2)": "https://www.google.com/maps/embed?pb=!4v1762458323248!6m8!1m7!1sb5C-OYlqJj4uhuNJvnvEQw!2m2!1d-8.005829462706783!2d-36.05558397349724!3f305.19175420573373!4f11.790720705912264!5f1.6048753708014791",
+            "Empena Toritama(Manoel da Silva 3)": "https://www.google.com/maps/embed?pb=!4v1762458624002!6m8!1m7!1sjU89crvWOk_aUz_2JarsWg!2m2!1d-8.00580118137063!2d-36.05629806704469!3f292.188000819157!4f13.145316681266635!5f1.8834753776765418",
+            "Empena Toritama(Manoel da Silva 4)": "https://www.google.com/maps/embed?pb=!4v1762459249871!6m8!1m7!1sc8CXkgDvzpFZEyppnllUYA!2m2!1d-8.006016230669681!2d-36.05715346051926!3f282.0578369033687!4f10.248985403942882!5f1.604875370805265",
 
+            "Empena Santa Cruz(Braz de Líra 1)": "https://www.google.com/maps/embed?pb=!4v1762459847916!6m8!1m7!1swHV79NXfhUY5S6JiKBB0yg!2m2!1d-7.955323893185507!2d-36.19693173328345!3f343.9491604240084!4f22.093669832662414!5f1.5366184664772655",
+            "Empena Santa Cruz(Nove de Dezembro)": "https://www.google.com/maps/embed?pb=!4v1762460231533!6m8!1m7!1sPq25ewaW7u5gFv4l7VJwWg!2m2!1d-7.954550698791035!2d-36.20591843681424!3f125.68248557394945!4f37.21542581820664!5f0.7820865974627469",
+            "Empena Santa Cruz(Braz de Líra 2)": "https://www.google.com/maps/embed?pb=!4v1762460603644!6m8!1m7!1s8jsBiRDMGf_VFKL5yEbRzA!2m2!1d-7.955030414271919!2d-36.19729550193312!3f104.95319681824944!4f35.42684112378599!5f0.7820865974627469",
+            "Empena Santa Cruz(Joaquim Nabuco)": "https://www.google.com/maps/embed?pb=!4v1762460821100!6m8!1m7!1sXx7mS-1T4KeTepsGAI_rqw!2m2!1d-7.950262550742936!2d-36.21232414051096!3f138.16819575693083!4f14.908240809105436!5f1.5366184664772655",
+            "Empena Santa Cruz(Braz de Líra 3)": "https://www.google.com/maps/embed?pb=!4v1762460998174!6m8!1m7!1sohv6FQHz7q8Xs1TEAG4QYA!2m2!1d-7.952955861651219!2d-36.20002685936198!3f167.1545516957219!4f11.654863080500022!5f1.673728629596631",
+            "Empena Santa Cruz(PE-160 1)": "https://www.google.com/maps/embed?pb=!4v1762461179357!6m8!1m7!1sSeW_mQyBUR-iFQyoAu_eXQ!2m2!1d-7.958877932484171!2d-36.18085644939502!3f295.06434090437006!4f15.700874893531804!5f1.5366990362433914",
+
+            "Empena Taquaritinga(Vieira da Silva)": "https://www.google.com/maps/embed?pb=!4v1762461399019!6m8!1m7!1sOfGeAhzbmWlUNF_qUfiOxg!2m2!1d-7.955295682425437!2d-36.13079461936356!3f129.9973131787843!4f24.891604944824735!5f1.5366990362433914",
+            "Empena Taquaritinga(PE 160 2)": "https://www.google.com/maps/embed?pb=!4v1762461567939!6m8!1m7!1sr68yH4TLeUABjKb-Ggs2cw!2m2!1d-7.960075757026368!2d-36.13635966651308!3f88.56225343477135!4f4.700081554937114!5f1.5366184664772655",
+
+        }
         // Ignorar Acentos
         function normalizar(str) {
             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
