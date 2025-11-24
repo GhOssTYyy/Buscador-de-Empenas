@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linhas de Ônibus - Campina Grande/PB</title>
+    <title>Linhas de Ônibus - Pernambuco/PE</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
@@ -477,6 +477,13 @@
         .dropdown_content a {
             padding: 12px 16px;
             display: block;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown_content a:hover {
+            background-color: #a30000;
         }
 
         .dropdown:hover .dropdown_content {
@@ -672,8 +679,8 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <img src="https://i.imgur.com/PolKIwx.png" alt="Brasão de Campina Grande" class="header-image-main">
-                <img src="https://i.imgur.com/ygxe7QR.png" alt="CG - Rainha da borborema" class="header-image">
+                <img src="https://i.imgur.com/PolKIwx.png" alt="Brasão de Pernambuco" class="header-image-main">
+                <img src="https://i.imgur.com/ygxe7QR.png" alt="PE - Estado de Pernambuco" class="header-image">
                 <div class="header-text">
                     <h1>PERNAMBUCO - PE</h1>
                     <p class="subtitle">Sistema de Consulta de Empenas Caju</p>
@@ -690,8 +697,6 @@
                         </div>
                     </li>
 
-                        <div class="nav_container_1">
-                <ul class="menu">
                     <li class="dropdown">
                         <strong><a href="#" class="dropdown">CIDADES</a></strong>
                         <div class="dropdown_content">
@@ -703,16 +708,16 @@
                     <li class="dropdown">
                         <strong><a href="#">CIDADES ATENDIDAS</a></strong>
                         <div class="dropdown_content">
-                            <a>Caruaru</a> 
-                            <a>Toritama</a>
-                            <a>Santa Cruz</a>  
-                            <a>Taquaritinga</a> 
-                            <a>Garanhuns</a> 
-                            <a>Belo Jardim</a> 
-                            <a>Pesqueira</a> 
-                            <a>Arcoverde</a> 
-                            <a>Custódia</a> 
-                            <a>Serra Talhada</a>
+                            <a href="#" onclick="selecionarCidade('Caruaru')">Caruaru</a> 
+                            <a href="#" onclick="selecionarCidade('Toritama')">Toritama</a>
+                            <a href="#" onclick="selecionarCidade('Santa Cruz')">Santa Cruz</a>  
+                            <a href="#" onclick="selecionarCidade('Taquaritinga')">Taquaritinga</a> 
+                            <a href="#" onclick="selecionarCidade('Garanhuns')">Garanhuns</a> 
+                            <a href="#" onclick="selecionarCidade('Belo Jardim')">Belo Jardim</a> 
+                            <a href="#" onclick="selecionarCidade('Pesqueira')">Pesqueira</a> 
+                            <a href="#" onclick="selecionarCidade('Arcoverde')">Arcoverde</a> 
+                            <a href="#" onclick="selecionarCidade('Custódia')">Custódia</a> 
+                            <a href="#" onclick="selecionarCidade('Serra Talhada')">Serra Talhada</a>
                         </div>
                     </li>
                 </ul>
@@ -740,7 +745,7 @@
 
         <div class="content">
             <div class="input-group">
-                <label for="bairrosInput">Digite o Bairro Desejado:(Não Precisa de Acentos, Nem letras maiúsculas)</label>
+                <label for="bairrosInput">Digite a Cidade Desejada:(Não Precisa de Acentos, Nem letras maiúsculas)</label>
                 <input type="text" id="bairrosInput" placeholder="Ex: Caruaru, Santa Cruz, Serra Talhada">
             </div>
             
@@ -1010,9 +1015,16 @@
             "Empena Serra Talhada(Nunes de Magalhães)" : "https://www.google.com/maps/embed?pb=!4v1762546595338!6m8!1m7!1s04WsweKxVhu_jBHIAsFyiw!2m2!1d-7.985269826459355!2d-38.29897420420264!3f198.60641190559124!4f19.533461753678495!5f0.7820865974627469",
             "Empena Serra Talhada(PE-365)": "https://www.google.com/maps/embed?pb=!4v1762546936743!6m8!1m7!1sgKGPMsq8gBdjzrbZctmDCQ!2m2!1d-7.981930473963807!2d-38.29473073605517!3f69.02626253619607!4f12.45018944338375!5f3.052327112200402",
         }
+
         // Ignorar Acentos
         function normalizar(str) {
             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        // Função para selecionar cidade do dropdown
+        function selecionarCidade(cidade) {
+            document.getElementById('bairrosInput').value = cidade;
+            buscarLinhas();
         }
 
         function buscarLinhas() {
@@ -1020,7 +1032,7 @@
             
             // Validação de entrada
             if (!input) {
-                document.getElementById('resultado').innerHTML = "<span style='color: #cc0000;'>Por favor, digite um bairro para consultar.</span>";
+                document.getElementById('resultado').innerHTML = "<span style='color: #cc0000;'>Por favor, digite uma cidade para consultar.</span>";
                 return;
             }
             
@@ -1066,7 +1078,7 @@
                         resultadosHTML += `
                             <div class="bairro-result">
                                 <div class="bairro-title">${bairroProcurado}</div>
-                                <div class="no-linhas">Nenhuma Empena encontrada para este bairro</div>
+                                <div class="no-linhas">Nenhuma Empena encontrada para esta cidade</div>
                             </div>
                         `;
                     }
@@ -1074,7 +1086,7 @@
                 
                 // Se não houver resultados válidos
                 if (!encontrouResultados) {
-                    resultadosHTML = "<div class='no-linhas'>Nenhum bairro válido foi informado.</div>";
+                    resultadosHTML = "<div class='no-linhas'>Nenhuma cidade válida foi informada.</div>";
                 }
                 
                 document.getElementById('resultado').innerHTML = resultadosHTML;
@@ -1153,19 +1165,6 @@
                 buscarLinhas();
             }
         });
-
-        // Funções de navegação (mantidas as originais)
-        function voltarpagina() {
-            window.location.href = "Rotas Caruaru.html";             
-        }
-
-        function voltarpagina2() {
-            window.location.href = "Rotas Natal.html";             
-        }
-
-        function voltarpagina3() {
-            window.location.href = "Rotas João Pessoa.html";             
-        }
 
         // Inicializar a galeria quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {

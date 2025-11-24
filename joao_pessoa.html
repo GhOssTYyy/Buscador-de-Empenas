@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linhas de Ônibus - Campina Grande/PB</title>
+    <title>Linhas de Ônibus - João Pessoa/PB</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
@@ -477,6 +477,13 @@
         .dropdown_content a {
             padding: 12px 16px;
             display: block;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown_content a:hover {
+            background-color: #a30000;
         }
 
         .dropdown:hover .dropdown_content {
@@ -672,8 +679,8 @@
     <div class="container">
         <div class="header">
             <div class="header-content">
-                <img src="https://i.imgur.com/PolKIwx.png" alt="Brasão de Campina Grande" class="header-image-main">
-                <img src="https://i.imgur.com/ygxe7QR.png" alt="CG - Rainha da borborema" class="header-image">
+                <img src="https://i.imgur.com/PolKIwx.png" alt="Brasão de João Pessoa" class="header-image-main">
+                <img src="https://i.imgur.com/ygxe7QR.png" alt="JP - Capital da Paraíba" class="header-image">
                 <div class="header-text">
                     <h1>JOÃO PESSOA - PB</h1>
                     <p class="subtitle">Sistema de Consulta de Empenas Caju</p>
@@ -691,8 +698,6 @@
                         </div>
                     </li>
 
-          <div class="nav_container_2">
-                <ul class="menu">
                     <li class="dropdown">
                         <strong><a href="#" class="dropdown">CIDADES</a></strong>
                         <div class="dropdown_content">
@@ -703,13 +708,13 @@
                     <li class="dropdown">
                         <strong><a href="#">BAIRROS ATENDIDOS</a></strong>
                         <div class="dropdown_content">
-                            <a>Torre</a>
-                            <a>Água Fria</a>
-                            <a>Oitizeiro</a>
-                            <a>Jaguaribe</a>
-                            <a>Cabo Branco</a>
-                            <a>Tambaú</a>
-                            <a>Manaíra</a>  
+                            <a href="#" onclick="selecionarBairro('Torre')">Torre</a>
+                            <a href="#" onclick="selecionarBairro('Água Fria')">Água Fria</a>
+                            <a href="#" onclick="selecionarBairro('Oitizeiro')">Oitizeiro</a>
+                            <a href="#" onclick="selecionarBairro('Jaguaribe')">Jaguaribe</a>
+                            <a href="#" onclick="selecionarBairro('Cabo Branco')">Cabo Branco</a>
+                            <a href="#" onclick="selecionarBairro('Tambaú')">Tambaú</a>
+                            <a href="#" onclick="selecionarBairro('Manaíra')">Manaíra</a>  
                         </div>
                     </li>
                 </ul>
@@ -944,6 +949,12 @@
         // Ignorar Acentos
         function normalizar(str) {
             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        // Função para selecionar bairro do dropdown
+        function selecionarBairro(bairro) {
+            document.getElementById('bairrosInput').value = bairro;
+            buscarLinhas();
         }
 
         function buscarLinhas() {

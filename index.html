@@ -477,6 +477,13 @@
         .dropdown_content a {
             padding: 12px 16px;
             display: block;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown_content a:hover {
+            background-color: #a30000;
         }
 
         .dropdown:hover .dropdown_content { 
@@ -690,12 +697,9 @@
                         </div>
                     </li>
 
-                                <div class="nav_container_3">
-                <ul class="menu">
                     <li class="dropdown">
                         <strong><a href="#" class="dropdown">CIDADES</a></strong>
                         <div class="dropdown_content">
-
                             <a href="joao_pessoa.html">João Pessoa</a>
                         </div>
                     </li>
@@ -703,16 +707,16 @@
                     <li class="dropdown">
                         <strong><a href="#">BAIRROS ATENDIDOS</a></strong>
                         <div class="dropdown_content">
-                            <a>Alto Branco</a>
-                            <a>Santo Antônio</a>
-                            <a>Centro</a>
-                            <a>Catolé</a>
-                            <a>São José</a>
-                            <a>Santa Terezinha</a>
-                            <a>Centenário</a>
-                            <a>Prata</a>
-                            <a>José Pinheiro</a>
-                            <a>Castelo Branco</a>   
+                            <a href="#" onclick="selecionarBairro('Alto Branco')">Alto Branco</a>
+                            <a href="#" onclick="selecionarBairro('Santo Antônio')">Santo Antônio</a>
+                            <a href="#" onclick="selecionarBairro('Centro')">Centro</a>
+                            <a href="#" onclick="selecionarBairro('Catolé')">Catolé</a>
+                            <a href="#" onclick="selecionarBairro('São José')">São José</a>
+                            <a href="#" onclick="selecionarBairro('Santa Terezinha')">Santa Terezinha</a>
+                            <a href="#" onclick="selecionarBairro('Centenário')">Centenário</a>
+                            <a href="#" onclick="selecionarBairro('Prata')">Prata</a>
+                            <a href="#" onclick="selecionarBairro('José Pinheiro')">José Pinheiro</a>
+                            <a href="#" onclick="selecionarBairro('Castelo Branco')">Castelo Branco</a>   
                         </div>
                     </li>
                 </ul>
@@ -984,6 +988,12 @@
             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         }
 
+        // Função para selecionar bairro do dropdown
+        function selecionarBairro(bairro) {
+            document.getElementById('bairrosInput').value = bairro;
+            buscarLinhas();
+        }
+
         function buscarLinhas() {
             const input = document.getElementById('bairrosInput').value.trim();
             
@@ -1121,19 +1131,6 @@
                 buscarLinhas();
             }
         });
-
-        // Funções de navegação (mantidas as originais)
-        function voltarpagina() {
-            window.location.href = "Rotas Caruaru.html";             
-        }
-
-        function voltarpagina2() {
-            window.location.href = "Rotas Natal.html";             
-        }
-
-        function voltarpagina3() {
-            window.location.href = "Rotas João Pessoa.html";             
-        }
 
         // Inicializar a galeria quando a página carregar
         document.addEventListener('DOMContentLoaded', function() {
